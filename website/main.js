@@ -1,3 +1,11 @@
+function ready(fn) {
+    if (document.readyState != 'loading'){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
 function lerp(initial, final, factor) {
     return initial + (final - initial) * factor;
 }
@@ -28,19 +36,50 @@ INTERVAL_SIZE = REGION_SIZE + TRANSITION_SIZE;
 
 COLORS = [[255, 255, 255], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 0, 0]];
 
+function getRegion() {
+    return Math.floor(scrollProgress/INTERVAL_SIZE);
+}
+
 function onScroll(delta) {
     updateScrollProgress(delta.deltaY);
-    var region = Math.floor(scrollProgress/INTERVAL_SIZE);
+    updateDisplay();
+}
+
+function updateDisplay() {
+    var region = getRegion();
     var intervalProgress = (scrollProgress%INTERVAL_SIZE);
     var transitionProgress = 0;
     if (intervalProgress > REGION_SIZE) {
         transitionProgress = (intervalProgress - REGION_SIZE)/TRANSITION_SIZE;
     }
-    if (transitionProgress > 0) {
-        var color = lerpColor(COLORS[region], COLORS[region+1], transitionProgress);
-        color = toCssColor.apply(null, color);
-        document.body.style.backgroundColor = color;
+    var color = lerpColor(COLORS[region], COLORS[region+1], transitionProgress);
+    color = toCssColor.apply(null, color);
+    document.body.style.backgroundColor = color;
+}
+
+function gotoRegion(region) {
+    if (region < 0) {
+        region = 0;
+    } else if (region >= COLORS.length - 1) {
+        region = COLORS.length - 2;
     }
+    console.log('before', scrollProgress);
+    scrollProgress = INTERVAL_SIZE*(region + 1) - TRANSITION_SIZE - REGION_SIZE/2;
+    console.log('after', scrollProgress);
+}
+
+function scrollDown(event) {
+    gotoRegion(getRegion() + 1);
+    updateDisplay();
+}
+
+function scrollUp(event) {
+    gotoRegion(getRegion() - 1);
+    updateDisplay();
 }
 
 document.addEventListener('wheel', onScroll);
+ready(function() {
+    document.getElementById('up-button').onclick=scrollUp;
+    document.getElementById('down-button').onclick=scrollDown;
+});
