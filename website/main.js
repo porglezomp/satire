@@ -22,15 +22,22 @@ function updateScrollProgress(delta) {
     }
 }
 
-colors = [[255, 255, 255], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 0, 0]];
+REGION_SIZE = 50;
+TRANSITION_SIZE = 25;
+INTERVAL_SIZE = REGION_SIZE + TRANSITION_SIZE;
+
+COLORS = [[255, 255, 255], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 0, 0]];
 
 function onScroll(delta) {
     updateScrollProgress(delta.deltaY);
-    var region = Math.floor(scrollProgress/150);
-    var regionProgress = (scrollProgress % 150)/150;
-    if (regionProgress > 0.66) {
-        var transitionProgress = (regionProgress - 0.66) * 3;
-        var color = lerpColor(colors[region], colors[region+1], transitionProgress);
+    var region = Math.floor(scrollProgress/INTERVAL_SIZE);
+    var intervalProgress = (scrollProgress%INTERVAL_SIZE);
+    var transitionProgress = 0;
+    if (intervalProgress > REGION_SIZE) {
+        transitionProgress = (intervalProgress - REGION_SIZE)/TRANSITION_SIZE;
+    }
+    if (transitionProgress > 0) {
+        var color = lerpColor(COLORS[region], COLORS[region+1], transitionProgress);
         color = toCssColor.apply(null, color);
         document.body.style.backgroundColor = color;
     }
