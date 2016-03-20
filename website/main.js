@@ -94,14 +94,33 @@ function animateSection(time) {
 }
 
 var PAGES = [
-    {title: "The Problem"},
-    {title: "Why Amazon?"},
-    {title: "What We're Doing"},
-    {title: "Products"},
-    {title: "The Technology"},
-    {title: "More"}
+    {title: "The Problem", source: 'content/01-00-the-problem.md'},
+    {title: "Why Amazon?", source: 'content/01-01-why-amazon.md'},
+    {title: "What We're Doing", source: 'content/02-00-what-were-doing.md'},
+    {title: "Products", source: 'content/02-01-products.md'},
+    {title: "The Technology", source: 'content/02-02-the-technology.md'},
+    {title: "More", source: 'content/03-00-more.md'},
 ];
 
+function buildPage() {
+    var main = document.getElementsByTagName('main')[0];
+    PAGES.forEach(function(section) {
+        var sectionNode = document.createElement('section');
+        main.appendChild(sectionNode);
+        var articleNode = document.createElement('article');
+        sectionNode.appendChild(articleNode);
+
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                var content = markdown.toHTML(request.responseText);
+                articleNode.insertAdjacentHTML('beforeend', content);
+            }
+        };
+        request.open("GET", section.source, true);
+        request.send();
+    });
+}
 var sectionIndex = 0;
 var imageIndex = 0;
 
@@ -132,6 +151,7 @@ function backwardState() {
 }
 
 ready(function() {
+    buildPage();
     document.addEventListener('wheel', onScroll);
     document.getElementById('up-button').onclick=backwardState;
     document.getElementById('down-button').onclick=forwardState;
