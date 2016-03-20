@@ -64,10 +64,31 @@ main {
 }
 
 main section {
+    right: 0;
+    left: 0;
     top: 0;
     position: absolute;
 }
 
 article {
-    width: 450px;
+    position: relative;
+    left: 0;
+    width: 30%;
+    float: left;
+}
+
+.image-stack-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    float: right;
+    width: 65%;
+}
+
+.image-container {
+    width: 100%;
+    margin-top: -240px;
+    height: 100vh;
+    position: absolute;
 }

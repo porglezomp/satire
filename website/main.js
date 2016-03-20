@@ -1,4 +1,5 @@
-var DURATION = 0.5;
+var SECTION_DURATION = 0.3;
+var IMAGE_DURATION = 0.3;
 var PAGES = [
     {
         title: "The Problem",
@@ -69,8 +70,8 @@ function animateImage(time) {
     }
 
     var timeProgress = (time - startTime)/1000;
-    if (timeProgress > DURATION) animating = false;
-    var progress = timeProgress/DURATION;
+    if (timeProgress > IMAGE_DURATION) animating = false;
+    var progress = timeProgress/IMAGE_DURATION;
 
     if (animating) {
         window.requestAnimationFrame(animateImage);
@@ -109,8 +110,8 @@ function animateSection(time) {
     }
 
     var timeProgress = (time - startTime)/1000;
-    if (timeProgress > DURATION) animating = false;
-    var progress = timeProgress/DURATION;
+    if (timeProgress > SECTION_DURATION) animating = false;
+    var progress = timeProgress/SECTION_DURATION;
 
     if (animating) {
         current.element.style.opacity = 1 - progress;
@@ -143,6 +144,19 @@ function buildPage() {
         main.appendChild(section.element);
         var articleNode = document.createElement('article');
         section.element.appendChild(articleNode);
+        var imageStackContainer = document.createElement('div');
+        imageStackContainer.className = 'image-stack-container';
+        section.element.appendChild(imageStackContainer);
+
+        section.imageElements = [];
+        for (var i = 0; i < section.count; i++) {
+            var imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.style.left = (50 * i) + 'px';
+            imageContainer.style.backgroundColor = 'rgb(' + (255-50*i) + ', 0, 0)';
+            section.imageElements.push(imageContainer);
+            imageStackContainer.appendChild(imageContainer);
+        }
 
         if (first) {
             first = false;
@@ -165,12 +179,12 @@ function buildPage() {
 }
 
 function onScroll(delta) {
-    if (!animating && delta.deltaY < 0) {
+    if (animating) return;
+    if (delta.deltaY < 0) {
         backwardState();
-    } else if (!animating && delta.deltaY > 0) {
+    } else if (delta.deltaY > 0) {
         forwardState();
     }
-    return false;
 }
 
 function forwardState() {
