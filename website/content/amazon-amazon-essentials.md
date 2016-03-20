@@ -4,16 +4,19 @@ Amazon Amazon Essentials
 The Amazon Amazon Essentials are a set of products optimized for the well-being of the people of the Amazon.
 They include:
 Bulk PVC tubing
+--------------
 *Rather than rely on simple sticks to build huts, we're offering a cost effective and light-weight alternative. 
 *Offered in over 10 different colors and sizes
 *PVC tube will revolutionize the construction techniques of our new customers.
 
-20lb bag of Cement Mix
+Cement Mix: 20 lb Bag
+---------------------
 *Like mud on steroids. 
 *Cement is just the first step in bringing the buildings of the Amazon out of the dark ages. 
 *Just add water (It doesn't even have to be drinkable).
 
-Carbon water filters
+Activated Carbon Water Filters
+------------------------------
 *Safe drinkable water is an absolute necessity. Without it, we die.
 *Amazon is bringing state-of-the-art carbon-based water filters to the Amazon. 
 *Offered in packs of 2 or packs of 10
