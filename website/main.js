@@ -1,3 +1,37 @@
+var DURATION = 0.5;
+var PAGES = [
+    {
+        title: "The Problem",
+        source: 'content/01-00-the-problem.md',
+        count: 4
+    },
+    {
+        title: "Why Amazon?",
+        source: 'content/01-01-why-amazon.md',
+        count: 2
+    },
+    {
+        title: "What We're Doing",
+        source: 'content/02-00-what-were-doing.md',
+        count: 4
+    },
+    {
+        title: "Products",
+        source: 'content/02-01-products.md',
+        count: 4
+    },
+    {
+        title: "The Technology",
+        source: 'content/02-02-the-technology.md',
+        count: 3
+    },
+    {
+        title: "More",
+        source: 'content/03-00-more.md',
+        count: 5
+    }
+];
+
 function ready(fn) {
     if (document.readyState != 'loading'){
         fn();
@@ -30,17 +64,7 @@ function updateScrollProgress(delta) {
     }
 }
 
-var REGION_SIZE = 50;
-var TRANSITION_SIZE = 25;
-var INTERVAL_SIZE = REGION_SIZE + TRANSITION_SIZE;
-
-function getRegion() {
-    return Math.floor(scrollProgress/INTERVAL_SIZE);
-
-}
-
 var animating = false;
-var animation = 0;
 function onScroll(delta) {
     if (!animating && delta.deltaY < 0) {
         backwardState();
@@ -52,7 +76,6 @@ function onScroll(delta) {
 
 var startTime = null;
 var direction = 0;
-var DURATION = 0.5;
 function beginAnimatingImage(_direction) {
     animating = true;
     direction = _direction;
@@ -65,50 +88,96 @@ function beginAnimatingSection(_direction) {
     window.requestAnimationFrame(animateSection);
 }
 
+var sectionIndex = 0;
+var imageIndex = 0;
 function animateImage(time) {
-    if (!startTime) startTime = time;
+    if (!startTime) {
+        startTime = time;
+    }
+
     var timeProgress = (time - startTime)/1000;
     if (timeProgress > DURATION) animating = false;
     var progress = timeProgress/DURATION;
 
     if (animating) {
-        console.log(progress, direction);
         window.requestAnimationFrame(animateImage);
     } else {
         startTime = null;
+        if (direction == 'forward') {
+            imageIndex++;
+        } else {
+            imageIndex--;
+        }
     }
 }
 
 function animateSection(time) {
-    if (!startTime) startTime = time;
+    var current = PAGES[sectionIndex];
+    var target;
+    var targetStart;
+    var currentEnd;
+    if (direction == 'forward') {
+        target = PAGES[sectionIndex + 1];
+        targetStart = 200;
+        currentEnd = -200;
+    } else {
+        target = PAGES[sectionIndex - 1];
+        targetStart = -200;
+        currentEnd = 200;
+    }
+
+    if (!startTime) {
+        startTime = time;
+        target.element.style.display = 'block';
+        current.element.style.opacity = 1;
+        target.element.style.opacity = 0;
+        current.element.style.top = 0;
+        target.element.style.top = targetStart;
+    }
+
     var timeProgress = (time - startTime)/1000;
     if (timeProgress > DURATION) animating = false;
     var progress = timeProgress/DURATION;
 
     if (animating) {
-        console.log(progress, direction);
+        current.element.style.opacity = 1 - progress;
+        target.element.style.opacity = progress;
         window.requestAnimationFrame(animateSection);
+        current.element.style.top = lerp(0, currentEnd, progress) + 'px';
+        target.element.style.top = lerp(targetStart, 0, progress) + 'px';
+        console.log(current.element.style.top);
     } else {
         startTime = null;
+        current.element.style.opacity = 0;
+        target.element.style.opacity = 1;
+        current.element.style.top = currentEnd;
+        target.element.style.top = 0;
+        current.element.style.display = 'none';
+        if (direction == 'forward') {
+            sectionIndex++;
+            imageIndex = 0;
+        } else {
+            sectionIndex--;
+            imageIndex = PAGES[sectionIndex].count - 1;
+        }
     }
 }
 
-var PAGES = [
-    {title: "The Problem", source: 'content/01-00-the-problem.md'},
-    {title: "Why Amazon?", source: 'content/01-01-why-amazon.md'},
-    {title: "What We're Doing", source: 'content/02-00-what-were-doing.md'},
-    {title: "Products", source: 'content/02-01-products.md'},
-    {title: "The Technology", source: 'content/02-02-the-technology.md'},
-    {title: "More", source: 'content/03-00-more.md'},
-];
-
 function buildPage() {
     var main = document.getElementsByTagName('main')[0];
+    var first = true;
     PAGES.forEach(function(section) {
-        var sectionNode = document.createElement('section');
-        main.appendChild(sectionNode);
+        section.element = document.createElement('section');
+        main.appendChild(section.element);
         var articleNode = document.createElement('article');
-        sectionNode.appendChild(articleNode);
+        section.element.appendChild(articleNode);
+
+        if (first) {
+            first = false;
+        } else {
+            section.element.style.opacity = 0;
+            section.element.style.display = 'none';
+        }
 
         var request = new XMLHttpRequest();
         request.onreadystatechange = function() {
@@ -121,31 +190,27 @@ function buildPage() {
         request.send();
     });
 }
-var sectionIndex = 0;
-var imageIndex = 0;
 
 function forwardState() {
-    if (imageIndex == PAGES[sectionIndex].length - 1) {
+    if (animating) return;
+    console.log('fore');
+    if (imageIndex >= PAGES[sectionIndex].count - 1) {
         if (sectionIndex < PAGES.length - 1) {
-            sectionIndex++;
-            imageIndex = 0;
             beginAnimatingSection('forward');
         }
     } else {
-        imageIndex++;
         beginAnimatingImage('forward');
     }
 }
 
 function backwardState() {
+    if (animating) return;
+    console.log('wow');
     if (imageIndex == 0) {
         if (sectionIndex > 0) {
-            sectionIndex--;
-            imageIndex = PAGES[sectionIndex].length - 1;
             beginAnimatingSection('backward');
         }
     } else {
-        imageIndex--;
         beginAnimatingImage('backward');
     }
 }

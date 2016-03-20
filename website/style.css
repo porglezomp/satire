@@ -58,9 +58,16 @@ nav {
 }
 
 main {
+    margin-top: 150px;
     margin-left: 60px;
+    position: relative;
 }
 
 main section {
+    top: 0;
+    position: absolute;
+}
+
+article {
     width: 450px;
 }
