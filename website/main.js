@@ -22,7 +22,7 @@ function toCssColor(r, g, b) {
     return 'rgb(' + (r|0) + ', ' + (g|0) + ', ' + (b|0) + ')';
 }
 
-scrollProgress = 0;
+var scrollProgress = 0;
 function updateScrollProgress(delta) {
     scrollProgress += delta;
     if (scrollProgress < 0) {
@@ -30,56 +30,109 @@ function updateScrollProgress(delta) {
     }
 }
 
-REGION_SIZE = 50;
-TRANSITION_SIZE = 25;
-INTERVAL_SIZE = REGION_SIZE + TRANSITION_SIZE;
-
-COLORS = [[255, 255, 255], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 0, 0]];
+var REGION_SIZE = 50;
+var TRANSITION_SIZE = 25;
+var INTERVAL_SIZE = REGION_SIZE + TRANSITION_SIZE;
 
 function getRegion() {
     return Math.floor(scrollProgress/INTERVAL_SIZE);
+
 }
 
+var animating = false;
+var animation = 0;
 function onScroll(delta) {
-    updateScrollProgress(delta.deltaY);
-    updateDisplay();
-}
-
-function updateDisplay() {
-    var region = getRegion();
-    var intervalProgress = (scrollProgress%INTERVAL_SIZE);
-    var transitionProgress = 0;
-    if (intervalProgress > REGION_SIZE) {
-        transitionProgress = (intervalProgress - REGION_SIZE)/TRANSITION_SIZE;
+    if (!animating && delta.deltaY < 0) {
+        backwardState();
+    } else if (!animating && delta.deltaY > 0) {
+        forwardState();
     }
-    var color = lerpColor(COLORS[region], COLORS[region+1], transitionProgress);
-    color = toCssColor.apply(null, color);
-    document.body.style.backgroundColor = color;
+    return false;
 }
 
-function gotoRegion(region) {
-    if (region < 0) {
-        region = 0;
-    } else if (region >= COLORS.length - 1) {
-        region = COLORS.length - 2;
+var startTime = null;
+var direction = 0;
+var DURATION = 0.5;
+function beginAnimatingImage(_direction) {
+    animating = true;
+    direction = _direction;
+    window.requestAnimationFrame(animateImage);
+}
+
+function beginAnimatingSection(_direction) {
+    animating = true;
+    direction = _direction;
+    window.requestAnimationFrame(animateSection);
+}
+
+function animateImage(time) {
+    if (!startTime) startTime = time;
+    var timeProgress = (time - startTime)/1000;
+    if (timeProgress > DURATION) animating = false;
+    var progress = timeProgress/DURATION;
+
+    if (animating) {
+        console.log(progress, direction);
+        window.requestAnimationFrame(animateImage);
+    } else {
+        startTime = null;
     }
-    console.log('before', scrollProgress);
-    scrollProgress = INTERVAL_SIZE*(region + 1) - TRANSITION_SIZE - REGION_SIZE/2;
-    console.log('after', scrollProgress);
 }
 
-function scrollDown(event) {
-    gotoRegion(getRegion() + 1);
-    updateDisplay();
+function animateSection(time) {
+    if (!startTime) startTime = time;
+    var timeProgress = (time - startTime)/1000;
+    if (timeProgress > DURATION) animating = false;
+    var progress = timeProgress/DURATION;
+
+    if (animating) {
+        console.log(progress, direction);
+        window.requestAnimationFrame(animateSection);
+    } else {
+        startTime = null;
+    }
 }
 
-function scrollUp(event) {
-    gotoRegion(getRegion() - 1);
-    updateDisplay();
+var PAGES = [
+    {title: "The Problem"},
+    {title: "Why Amazon?"},
+    {title: "What We're Doing"},
+    {title: "Products"},
+    {title: "The Technology"},
+    {title: "More"}
+];
+
+var sectionIndex = 0;
+var imageIndex = 0;
+
+function forwardState() {
+    if (imageIndex == PAGES[sectionIndex].length - 1) {
+        if (sectionIndex < PAGES.length - 1) {
+            sectionIndex++;
+            imageIndex = 0;
+            beginAnimatingSection('forward');
+        }
+    } else {
+        imageIndex++;
+        beginAnimatingImage('forward');
+    }
 }
 
-document.addEventListener('wheel', onScroll);
+function backwardState() {
+    if (imageIndex == 0) {
+        if (sectionIndex > 0) {
+            sectionIndex--;
+            imageIndex = PAGES[sectionIndex].length - 1;
+            beginAnimatingSection('backward');
+        }
+    } else {
+        imageIndex--;
+        beginAnimatingImage('backward');
+    }
+}
+
 ready(function() {
-    document.getElementById('up-button').onclick=scrollUp;
-    document.getElementById('down-button').onclick=scrollDown;
+    document.addEventListener('wheel', onScroll);
+    document.getElementById('up-button').onclick=backwardState;
+    document.getElementById('down-button').onclick=forwardState;
 });
