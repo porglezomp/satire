@@ -27,12 +27,12 @@ body {
 
 #up-button {
     position: absolute;
-    top: 150px;
+    top: 100px;
 }
 
 #down-button {
     position: absolute;
-    bottom: 150px;
+    bottom: 100px;
 }
 
 header {

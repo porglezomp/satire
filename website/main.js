@@ -40,40 +40,9 @@ function ready(fn) {
     }
 }
 
-function lerp(initial, final, factor) {
-    return initial + (final - initial) * factor;
-}
-
-function lerpColor(initial, final, factor) {
-    return [
-        lerp(initial[0], final[0], factor),
-        lerp(initial[1], final[1], factor),
-        lerp(initial[2], final[2], factor),
-    ];
-}
-
-function toCssColor(r, g, b) {
-    return 'rgb(' + (r|0) + ', ' + (g|0) + ', ' + (b|0) + ')';
-}
-
-var scrollProgress = 0;
-function updateScrollProgress(delta) {
-    scrollProgress += delta;
-    if (scrollProgress < 0) {
-        scrollProgress = 0;
-    }
-}
+function lerp(x0, x1, t) { return x0 + (x1 - x0) * t; }
 
 var animating = false;
-function onScroll(delta) {
-    if (!animating && delta.deltaY < 0) {
-        backwardState();
-    } else if (!animating && delta.deltaY > 0) {
-        forwardState();
-    }
-    return false;
-}
-
 var startTime = null;
 var direction = 0;
 function beginAnimatingImage(_direction) {
@@ -145,7 +114,6 @@ function animateSection(time) {
         window.requestAnimationFrame(animateSection);
         current.element.style.top = lerp(0, currentEnd, progress) + 'px';
         target.element.style.top = lerp(targetStart, 0, progress) + 'px';
-        console.log(current.element.style.top);
     } else {
         startTime = null;
         current.element.style.opacity = 0;
@@ -191,9 +159,17 @@ function buildPage() {
     });
 }
 
+function onScroll(delta) {
+    if (!animating && delta.deltaY < 0) {
+        backwardState();
+    } else if (!animating && delta.deltaY > 0) {
+        forwardState();
+    }
+    return false;
+}
+
 function forwardState() {
     if (animating) return;
-    console.log('fore');
     if (imageIndex >= PAGES[sectionIndex].count - 1) {
         if (sectionIndex < PAGES.length - 1) {
             beginAnimatingSection('forward');
@@ -205,7 +181,6 @@ function forwardState() {
 
 function backwardState() {
     if (animating) return;
-    console.log('wow');
     if (imageIndex == 0) {
         if (sectionIndex > 0) {
             beginAnimatingSection('backward');
