@@ -1,6 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
+    
 }
 
 .button {
@@ -92,3 +93,21 @@ article {
     height: 100vh;
     position: absolute;
 }
+
+@font-face{
+	font-family: OfficinaSans;
+	src: url(http://people.oregonstate.edu/~hanshumw/Specie%20I.D./Signage%20Backup/FONT%20Officina%20full/ITC%20Officina%20Sans%20LT%20Book.ttf);
+	font-weight: normal;
+}
+
+@font-face{
+	font-family: OfficinaSans;
+	src: url(http://people.oregonstate.edu/~hanshumw/Specie%20I.D./Signage%20Backup/FONT%20Officina%20full/ITC%20Officina%20Sans%20LT%20Bold.ttf);
+}
+
+/*Josefin Slab*/
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:400,700);
+
+
+/*Droid Sans*/
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
