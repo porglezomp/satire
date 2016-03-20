@@ -42,6 +42,10 @@ function ready(fn) {
 
 function lerp(x0, x1, t) { return x0 + (x1 - x0) * t; }
 
+function sanitize(text) {
+    return text.replace(/^!.*\n?/gm, '');
+}
+
 var animating = false;
 var startTime = null;
 var direction = 0;
@@ -150,7 +154,8 @@ function buildPage() {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if (request.readyState == 4 && request.status == 200) {
-                var content = markdown.toHTML(request.responseText);
+                var text = sanitize(request.responseText);
+                var content = markdown.toHTML(text);
                 articleNode.insertAdjacentHTML('beforeend', content);
             }
         };
