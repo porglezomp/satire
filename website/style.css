@@ -81,6 +81,7 @@ header h1 {
 main section {
     position: absolute;
     left: 0; right: 0; top: 0;
+    transition: top 0.8s, 0.5s;
     height: 100vh;
 }
 
@@ -107,6 +108,11 @@ sidebar article h1 {
     position: absolute;
     width: 100vw; height: 100vh;
 }
+
+.above { top: -100vh; opacity: 0; }
+.below { top: 100vh; opacity: 0; }
+.focus { top: 0; opacity: 1; }
+.hidden { display: none; }
 
 /*
 @font-face {
