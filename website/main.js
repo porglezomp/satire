@@ -179,7 +179,7 @@ function buildPage() {
             var imageContainer = document.createElement('div');
             imageContainer.className = 'image-container';
             imageContainer.style.left = (IMAGE_EXPOSED_PERCENT * i) + '%';
-            imageContainer.style.backgroundColor = 'rgb(' + (255-50*i) + ', 0, 0)';
+            imageContainer.style.backgroundColor = 'rgb(0, ' + (255-50*i) + ', 0)';
             section.imageElements.push(imageContainer);
             imageStackContainer.appendChild(imageContainer);
         }
@@ -214,13 +214,15 @@ function overlayFullText(event) {
 
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
-        console.log(request);
         if (request.readyState == 4 && request.status == 200) {
             var text = sanitize(request.responseText);
             var content = markdown.toHTML(text);
             var sidebar = document.getElementById('full-text');
             sidebar.className = '';
             document.getElementById('full-article').innerHTML = content;
+            document.getELementsByClass('image-stack-container').forEach(function(c) {
+                c.style.width = '100%';
+            });
         }
     };
     request.open('GET', '/content'+href+'.md', true);
@@ -230,6 +232,9 @@ function overlayFullText(event) {
 
 function closeFullText(event) {
     document.getElementById('full-text').className = 'collapsed';
+    document.getElementsByClass('image-stack-container').forEach(function(c) {
+        c.style.width = '65%';
+    });
     return false;
 }
 

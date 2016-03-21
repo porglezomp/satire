@@ -111,10 +111,11 @@ article.summary {
     right: 0;
     float: right;
     width: 65%;
+    transition: width 0.5s;
 }
 
 .image-container {
-    width: 100%;
+    width: 65vw;
     margin-top: -240px;
     height: 100vh;
     position: absolute;
