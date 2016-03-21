@@ -159,9 +159,8 @@ function buildPage() {
 }
 
 function overlayFullText(event) {
-    event.preventDefault();
     var href = event.target.getAttribute('href');
-    if (href.match(/^https?:/)) return true;
+    if (href.match(/^https?:/)) return;
 
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -182,6 +181,7 @@ function overlayFullText(event) {
     request.open('GET', '/content'+href+'.md', true);
     request.send();
     document.removeEventListener('wheel', onScroll);
+    event.preventDefault();
 }
 
 function closeFullText(event) {
