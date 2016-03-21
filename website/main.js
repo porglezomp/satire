@@ -1,5 +1,5 @@
-var SECTION_DURATION = 0.3;
-var IMAGE_DURATION = 0.3;
+var SECTION_DURATION = 800;
+var IMAGE_DURATION = 600;
 var IMAGE_EXPOSED_PERCENT = 5;
 var PAGES = [
     {
@@ -10,22 +10,23 @@ var PAGES = [
     {
         title: "Why Amazon?",
         source: 'content/01-01-why-amazon.md',
-        count: 2
+        count: 3
     },
     {
         title: "What We're Doing",
+
         source: 'content/02-00-what-were-doing.md',
         count: 4
     },
     {
         title: "Products",
         source: 'content/02-01-products.md',
-        count: 4
+        count: 3
     },
     {
         title: "The Technology",
         source: 'content/02-02-the-technology.md',
-        count: 3
+        count: 4
     },
     {
         title: "More",
@@ -49,98 +50,47 @@ function sanitize(text) {
 }
 
 var animating = false;
-var startTime = null;
-var direction = 0;
-function beginAnimatingImage(_direction) {
-    animating = true;
-    direction = _direction;
-    window.requestAnimationFrame(animateImage);
-}
-
-function beginAnimatingSection(_direction) {
-    animating = true;
-    direction = _direction;
-    window.requestAnimationFrame(animateSection);
-}
-
 var sectionIndex = 0;
 var imageIndex = 0;
-function animateImage(time) {
+function animateImage(direction) {
+    if (animating) return;
+    animating = true;
+
     var index = PAGES[sectionIndex].imageElements.length - imageIndex - 1;
     if (direction == 'backward') index++;
-    var startOffset = index * IMAGE_EXPOSED_PERCENT;
     var endOffset = 100;
     if (direction == 'backward') {
-        var tmp = startOffset;
-        startOffset = endOffset;
-        endOffset = tmp;
+        endOffset = index * IMAGE_EXPOSED_PERCENT;
     }
     var target = PAGES[sectionIndex].imageElements[index];
+    target.style.left = endOffset + '%';
 
-    if (!startTime) {
-        startTime = time;
-        target.style.left = startOffset + '%';
-    }
-
-    var timeProgress = (time - startTime)/1000;
-    if (timeProgress > IMAGE_DURATION) animating = false;
-    var progress = timeProgress/IMAGE_DURATION;
-
-    if (animating) {
-        window.requestAnimationFrame(animateImage);
-        target.style.left = lerp(startOffset, endOffset, progress) + '%';
-    } else {
-        startTime = null;
-        target.style.left = endOffset + '%';
+    window.setTimeout(function() {
+        animating = false;
         if (direction == 'forward') {
             imageIndex++;
         } else {
             imageIndex--;
         }
-    }
+    }, IMAGE_DURATION);
 }
 
-function animateSection(time) {
+function animateSection(direction) {
+    if (animating) return;
+    animating = true;
     var current = PAGES[sectionIndex];
     var target;
-    var targetStart;
-    var currentEnd;
     if (direction == 'forward') {
         target = PAGES[sectionIndex + 1];
-        targetStart = 200;
-        currentEnd = -200;
+        current.element.className = 'above';
     } else {
         target = PAGES[sectionIndex - 1];
-        targetStart = -200;
-        currentEnd = 200;
+        current.element.className = 'below';
     }
+    target.element.className = 'focus';
 
-    if (!startTime) {
-        startTime = time;
-        target.element.style.display = 'block';
-        current.element.style.opacity = 1;
-        target.element.style.opacity = 0;
-        current.element.style.top = 0;
-        target.element.style.top = targetStart;
-    }
-
-    var timeProgress = (time - startTime)/1000;
-    if (timeProgress > SECTION_DURATION) animating = false;
-    var progress = timeProgress/SECTION_DURATION;
-
-    if (animating) {
-        current.element.style.opacity = 1 - progress;
-        target.element.style.opacity = progress;
-        window.requestAnimationFrame(animateSection);
-        current.element.style.top = lerp(0, currentEnd, progress) + 'px';
-        target.element.style.top = lerp(targetStart, 0, progress) + 'px';
-    } else {
-        startTime = null;
-        current.element.style.opacity = 0;
-        target.element.style.opacity = 1;
-        current.element.style.top = currentEnd;
-        target.element.style.top = 0;
-        current.element.style.display = 'none';
+    window.setTimeout(function() {
+        animating = false;
         if (direction == 'forward') {
             sectionIndex++;
             imageIndex = 0;
@@ -148,15 +98,15 @@ function animateSection(time) {
             sectionIndex--;
             imageIndex = PAGES[sectionIndex].count - 1;
         }
-    }
+    }, SECTION_DURATION);
 }
 
 function buildPage() {
-    var main = document.getElementsByTagName('main')[0];
+    var sidebar = document.getElementsByTagName('sidebar')[0];
     var first = true;
     PAGES.forEach(function(section) {
         section.element = document.createElement('section');
-        main.appendChild(section.element);
+        sidebar.appendChild(section.element);
         var articleNode = document.createElement('article');
         section.element.appendChild(articleNode);
         var imageStackContainer = document.createElement('div');
@@ -175,9 +125,9 @@ function buildPage() {
 
         if (first) {
             first = false;
+            section.element.className = 'focus';
         } else {
-            section.element.style.opacity = 0;
-            section.element.style.display = 'none';
+            section.element.className = 'below';
         }
 
         var request = new XMLHttpRequest();
@@ -193,34 +143,37 @@ function buildPage() {
     });
 }
 
-function onScroll(delta) {
+function onScroll(event) {
+    event.preventDefault();
     if (animating) return;
-    if (delta.deltaY < 0) {
-        backwardState();
-    } else if (delta.deltaY > 0) {
-        forwardState();
+    if (event.deltaY < 0) {
+        backwardState(event);
+    } else if (event.deltaY > 0) {
+        forwardState(event);
     }
 }
 
-function forwardState() {
+function forwardState(event) {
+    event.preventDefault();
     if (animating) return;
     if (imageIndex >= PAGES[sectionIndex].count - 1) {
         if (sectionIndex < PAGES.length - 1) {
-            beginAnimatingSection('forward');
+            animateSection('forward');
         }
     } else {
-        beginAnimatingImage('forward');
+        animateImage('forward');
     }
 }
 
-function backwardState() {
+function backwardState(event) {
+    event.preventDefault();
     if (animating) return;
     if (imageIndex == 0) {
         if (sectionIndex > 0) {
-            beginAnimatingSection('backward');
+            animateSection('backward');
         }
     } else {
-        beginAnimatingImage('backward');
+        animateImage('backward');
     }
 }
 
