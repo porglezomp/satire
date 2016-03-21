@@ -22,4 +22,4 @@ Fact: We sell 5 mile extension cords in our new AmazonAmazonEssentials section.
 
 **Myth: Amazon is airdropping desktop computers without monitors. Even if they could get power to them, they don't have any way to access the login screen, let alone the Rainforest Prime Website.**
 
-Fact: Oh shit.
+Fact: If you were an Engineer, you'd understand the complexity of the problems associated with solving this issue.  
