@@ -5,8 +5,14 @@ Myths and Facts
 
 Fact: We're already milking today's college students for every penny they're worth. We're rolling in dough. Let's face it, Aamzonian society is too bass-ackwards and poor to make us richer in any substantive way.
 
-**Myth: **
 
+**Myth: When people buy something on Rainforest Prime, they don't actually realize that they're paying real money.**
+
+Fact: They can't make an account without a credit card, so they literally can't get to that point without being fully aware that they're going to be charged for their purchases.
+
+**Myth: Only Amazon monetarily benefits from the shameless exploitation you're instituting**
+
+Fact: Every seller in the Amazon marketplace has an equal opportunity to benefit from the increase in our customer base.
 
 
 **Myth: Amazon never considered how the natives of the Amazon would power their new desktop computers.**
