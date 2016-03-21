@@ -1,5 +1,6 @@
 var SECTION_DURATION = 0.3;
 var IMAGE_DURATION = 0.3;
+var IMAGE_EXPOSED_PERCENT = 5;
 var PAGES = [
     {
         title: "The Problem",
@@ -65,8 +66,20 @@ function beginAnimatingSection(_direction) {
 var sectionIndex = 0;
 var imageIndex = 0;
 function animateImage(time) {
+    var index = PAGES[sectionIndex].imageElements.length - imageIndex - 1;
+    if (direction == 'backward') index++;
+    var startOffset = index * IMAGE_EXPOSED_PERCENT;
+    var endOffset = 100;
+    if (direction == 'backward') {
+        var tmp = startOffset;
+        startOffset = endOffset;
+        endOffset = tmp;
+    }
+    var target = PAGES[sectionIndex].imageElements[index];
+
     if (!startTime) {
         startTime = time;
+        target.style.left = startOffset + '%';
     }
 
     var timeProgress = (time - startTime)/1000;
@@ -75,8 +88,10 @@ function animateImage(time) {
 
     if (animating) {
         window.requestAnimationFrame(animateImage);
+        target.style.left = lerp(startOffset, endOffset, progress) + '%';
     } else {
         startTime = null;
+        target.style.left = endOffset + '%';
         if (direction == 'forward') {
             imageIndex++;
         } else {
@@ -152,7 +167,7 @@ function buildPage() {
         for (var i = 0; i < section.count; i++) {
             var imageContainer = document.createElement('div');
             imageContainer.className = 'image-container';
-            imageContainer.style.left = (50 * i) + 'px';
+            imageContainer.style.left = (IMAGE_EXPOSED_PERCENT * i) + '%';
             imageContainer.style.backgroundColor = 'rgb(' + (255-50*i) + ', 0, 0)';
             section.imageElements.push(imageContainer);
             imageStackContainer.appendChild(imageContainer);
