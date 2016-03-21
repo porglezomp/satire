@@ -2,20 +2,24 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: "Lato", sans-serif;
-    font-weight:300;
+    font-weight:400;
     font-size:24;	
     width:80%;
     margin: 0 auto;
+    
+}
+p{
+	color: #888;
 }
 
 h1{
 	font-size:36pt;
-	font-family: "Josefin Slab", serif;
+	font-family: "Vollkorn", serif;
 	font-weight:700;
 }
 
 h2{
-	font-family: "Josefin Slab", serif;
+	font-family: "Vollkorn", serif;
 	font-size:32pt;
 	font-weight:400;
 }
