@@ -168,6 +168,7 @@ function buildPage() {
         section.element = document.createElement('section');
         main.appendChild(section.element);
         var articleNode = document.createElement('article');
+        articleNode.className = 'summary';
         section.element.appendChild(articleNode);
         var imageStackContainer = document.createElement('div');
         imageStackContainer.className = 'image-stack-container';
@@ -218,12 +219,17 @@ function overlayFullText(event) {
             var text = sanitize(request.responseText);
             var content = markdown.toHTML(text);
             var sidebar = document.getElementById('full-text');
-            sidebar.innerHTML = content;
             sidebar.className = '';
+            document.getElementById('full-article').innerHTML = content;
         }
     };
     request.open('GET', '/content'+href+'.md', true);
     request.send();
+    return false;
+}
+
+function closeFullText(event) {
+    document.getElementById('full-text').className = 'collapsed';
     return false;
 }
 
@@ -263,4 +269,5 @@ ready(function() {
     document.addEventListener('wheel', onScroll);
     document.getElementById('up-button').onclick=backwardState;
     document.getElementById('down-button').onclick=forwardState;
+    document.getElementById('close-text').onclick=closeFullText;
 });

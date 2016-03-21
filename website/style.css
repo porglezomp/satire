@@ -95,7 +95,7 @@ main section {
     position: absolute;
 }
 
-article {
+article.summary {
     position: relative;
     left: 0;
     width: 30%;
@@ -128,7 +128,7 @@ article {
     height: 100vh;
     left: 50%;
     right: 0;
-    transition: left 2s;
+    transition: left 0.5s;
     background: white;
 }
 
