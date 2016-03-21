@@ -10,7 +10,7 @@ Fact: We're already milking today's college students for every penny they're wor
 
 Fact: They can't make an account without a credit card, so they literally can't get to that point without being fully aware that they're going to be charged for their purchases.
 
-**Myth: Only Amazon monetarily benefits from the system of shameless exploitation you're creating.**
+**Myth: Amazon is the only company that  monetarily benefits from the system of shameless exploitation you're creating.**
 
 Fact: Every seller in the Amazon marketplace has an equal opportunity to benefit from the increase in our customer base.
 
