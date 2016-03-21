@@ -14,6 +14,7 @@ var PAGES = [
     },
     {
         title: "What We're Doing",
+
         source: 'content/02-00-what-were-doing.md',
         count: 4
     },
@@ -152,11 +153,11 @@ function animateSection(time) {
 }
 
 function buildPage() {
-    var main = document.getElementsByTagName('main')[0];
+    var sidebar = document.getElementsByTagName('sidebar')[0];
     var first = true;
     PAGES.forEach(function(section) {
         section.element = document.createElement('section');
-        main.appendChild(section.element);
+        sidebar.appendChild(section.element);
         var articleNode = document.createElement('article');
         section.element.appendChild(articleNode);
         var imageStackContainer = document.createElement('div');

@@ -1,26 +1,25 @@
 body {
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: "Lato", sans-serif;
-    font-weight: 400;
+    font-weight: normal;
 }
 
 h1 {
-    font-size: 36pt;
+    font-size: 3.6vw;
     font-family: "Vollkorn", serif;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 h2 {
     font-family: "Vollkorn", serif;
-    font-size: 24pt;
-    font-weight: 400;
+    font-size: 2.4vw;
+    font-weight: normal;
 }
 
-p, li {
-    font-size: 21px;
-}
+p, li { font-size: 20px; }
 
+/*
 .button {
     color: white;
     font-weight: bold;
@@ -36,7 +35,7 @@ p, li {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none: ;;
 }
 
 .button:hover {
@@ -52,70 +51,61 @@ p, li {
     position: absolute;
     bottom: 100px;
 }
+*/
+
+sidebar {
+    position: fixed;
+    left: 0; right: 0; top: 0; bottom: 0;
+    overflow: hidden;
+}
 
 header {
-    padding-top: 30px;
-    height: 60px;
-    margin-left: 60px;
+    position: fixed;
+    top: 0;
+    height: 100px;
+    padding: 30px 40px;
+    box-sizing: border-box;
 }
 
 header h1 {
     margin: 0;
     font-family: "Officina Sans";
     font-weight: bold;
-    font-size: 38px;
+    font-size: 2.8vw;
 }
 
-.amazon { font-size: 42px; }
+.amazon { font-size: 3.3vw; }
 .amazon sup { color: #F90; }
 .prime { color: #094; }
 
-section h1 {
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 100vh;
+}
+
+sidebar article {
+    position: relative;
+    left: 0; top: 100px;
+    width: 40vw; height: 100vh;
+    padding: 60px 40px;
+    box-sizing: border-box;
+}
+
+sidebar article h1 {
     font-size: 50px;
     margin: 0;
 }
 
-nav {
-    position: absolute;
-    bottom: 0;
-    top: 60px;
-    float: left;
-}
-
-main {
-    margin-top: 150px;
-    margin-left: 60px;
-    position: relative;
-}
-
-main section {
-    right: 0;
-    left: 0;
-    top: 0;
-    position: absolute;
-}
-
-article {
-    position: relative;
-    left: 0;
-    width: 30%;
-    float: left;
-}
-
 .image-stack-container {
     position: absolute;
-    bottom: 0;
-    top: 0;
-    right: 0;
-    float: right;
-    width: 65%;
+    top: 0; right: 0;
+    width: 60vw; height: 100vh;
 }
 
 .image-container {
-    width: 100%;
-    margin-top: -240px;
-    height: 100vh;
     position: absolute;
+    width: 100vw; height: 100vh;
 }
 
 /*
