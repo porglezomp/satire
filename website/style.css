@@ -93,6 +93,7 @@ sidebar article h1 {
 sidebar article p { transition: margin 1s 0.3s; }
 .above article p { margin-top: -50px; }
 .below article p { margin-top: 100px; }
+.stick-left { left: 0 !important; }
 .focus article {
     opacity: 1;
     transition-duration: 0.5s;
@@ -102,17 +103,20 @@ sidebar article p { transition: margin 1s 0.3s; }
 #full-text {
     position: absolute;
     left: 50vw; right: 0;
-    min-width: 40vw;
+    min-width: 50vw;
     padding: 50px;
     /* z-index: through-the-moon; */
     height: auto;
     z-index: 1000;
     background: white;
     transition: left 0.5s;
+    box-sizing: border-box;
 }
 
 #full-text.collapsed {
     left: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 @font-face {

@@ -159,6 +159,7 @@ function buildPage() {
 }
 
 function overlayFullText(event) {
+    event.preventDefault();
     var href = event.target.getAttribute('href');
     if (href.match(/^https?:/)) return true;
 
@@ -170,22 +171,28 @@ function overlayFullText(event) {
             var sidebar = document.getElementById('full-text');
             sidebar.className = '';
             document.getElementById('full-article').innerHTML = content;
-            document.getELementsByClass('image-stack-container').forEach(function(c) {
-                c.style.width = '100%';
+            [].forEach.call(
+                document.getElementsByClassName('image-stack-container'),
+                function(c) { c.style.width = '100%'; });
+            PAGES[sectionIndex].imageElements.forEach(function(element) {
+                element.className += ' stick-left';
             });
         }
     };
     request.open('GET', '/content'+href+'.md', true);
     request.send();
-    return false;
+    document.removeEventListener('wheel', onScroll);
 }
 
 function closeFullText(event) {
+    event.preventDefault();
     document.getElementById('full-text').className = 'collapsed';
-    document.getElementsByClass('image-stack-container').forEach(function(c) {
-        c.style.width = '65%';
+    [].forEach.call(document.getElementsByClassName('image-stack-container'),
+                    function(c) { c.style.width = ''; });
+    PAGES[sectionIndex].imageElements.forEach(function(element) {
+        element.className = 'image-container';
     });
-    return false;
+document.addEventListener('wheel', onScroll);
 }
 
 function onScroll(event) {
