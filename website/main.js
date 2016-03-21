@@ -42,6 +42,16 @@ function ready(fn) {
     }
 }
 
+function getLinkElementByHref(href) {
+    var links = document.getElementsByTagName('a');
+    for (var i = 0, l = links.length; i < l; i++) {
+        var link = links[i];
+        if (link.href === href) {
+            return link;
+        }
+    }
+}
+
 function lerp(x0, x1, t) { return x0 + (x1 - x0) * t; }
 
 function sanitize(text) {
@@ -186,11 +196,21 @@ function buildPage() {
                 var text = sanitize(request.responseText);
                 var content = markdown.toHTML(text);
                 articleNode.insertAdjacentHTML('beforeend', content);
+                var links = articleNode.getElementsByTagName('a');
+                [].forEach.call(links, function(link) {
+                    link.onclick = overlayFullText;
+                });
             }
         };
         request.open("GET", section.source, true);
         request.send();
     });
+}
+
+function overlayFullText(event) {
+    var href = event.target.getAttribute('href');
+    if (href.match(/^https?:/)) return true;
+    return false;
 }
 
 function onScroll(delta) {
