@@ -128,11 +128,9 @@ article {
 
 @font-face {
     font-family: "Officina Sans";
-    src: url(/fonts/ITC-Officina-Sans-LT-Bold.ttf);
+    src: url(/fonts/ITC-Officina-Sans-LT-Bold-Webfont.ttf);
     font-weight: bold;
 }
-
-
 
 /*Lato*/
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
