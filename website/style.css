@@ -2,10 +2,25 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: "Lato", sans-serif;
-    font-weight:300;
-    font-size:24;	
+    font-weight: 300;
+    font-size: 24;
 }
 
+h1 {
+    font-size: 36pt;
+    font-family: "Vollkorn", serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: "Vollkorn", serif;
+    font-size: 24pt;
+    font-weight: 400;
+}
+
+p {
+    font-size: 14pt;
+}
 
 .button {
     color: white;
@@ -47,6 +62,8 @@ header {
 
 header h1 {
     margin: 0;
+    font-family: "Officina Sans";
+    font-weight: bold;
 }
 
 section h1 {
@@ -97,15 +114,16 @@ article {
     position: absolute;
 }
 
-@font-face{
-	font-family: "OfficinaSans";
-	src: url(http://people.oregonstate.edu/~hanshumw/Specie%20I.D./Signage%20Backup/FONT%20Officina%20full/ITC%20Officina%20Sans%20LT%20Book.ttf);
-	font-weight: normal;
+@font-face {
+    font-family: "Officina Sans";
+    src: url(/fonts/ITC-Officina-Sans-LT-Book.ttf);
+    font-weight: normal;
 }
 
-@font-face{
-	font-family: "OfficinaSans";
-	src: url(http://people.oregonstate.edu/~hanshumw/Specie%20I.D./Signage%20Backup/FONT%20Officina%20full/ITC%20Officina%20Sans%20LT%20Bold.ttf);
+@font-face {
+    font-family: "Officina Sans";
+    src: url(/fonts/ITC-Officina-Sans-LT-Bold.ttf);
+    font-weight: bold;
 }
 
 
