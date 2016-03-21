@@ -118,6 +118,24 @@ article {
     position: absolute;
 }
 
+#full-text {
+    /* z-index: through-the-moon; */
+    z-index: 1000;
+    position: absolute;
+    margin-top: -240px;
+    min-width: 40vw;
+    padding: 50px;
+    height: 100vh;
+    left: 50%;
+    right: 0;
+    transition: left 2s;
+    background: white;
+}
+
+#full-text.collapsed {
+    left: 100%;
+}
+
 /*
 @font-face {
     font-family: "Officina Sans";

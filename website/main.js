@@ -202,7 +202,7 @@ function buildPage() {
                 });
             }
         };
-        request.open("GET", section.source, true);
+        request.open('GET', section.source, true);
         request.send();
     });
 }
@@ -210,6 +210,20 @@ function buildPage() {
 function overlayFullText(event) {
     var href = event.target.getAttribute('href');
     if (href.match(/^https?:/)) return true;
+
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        console.log(request);
+        if (request.readyState == 4 && request.status == 200) {
+            var text = sanitize(request.responseText);
+            var content = markdown.toHTML(text);
+            var sidebar = document.getElementById('full-text');
+            sidebar.innerHTML = content;
+            sidebar.className = '';
+        }
+    };
+    request.open('GET', '/content'+href+'.md', true);
+    request.send();
     return false;
 }
 
