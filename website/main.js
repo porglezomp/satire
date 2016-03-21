@@ -1,5 +1,5 @@
-var IMAGE_DURATION = 0.3;
 var SECTION_DURATION = 800;
+var IMAGE_DURATION = 600;
 var IMAGE_EXPOSED_PERCENT = 5;
 var PAGES = [
     {
@@ -10,7 +10,7 @@ var PAGES = [
     {
         title: "Why Amazon?",
         source: 'content/01-01-why-amazon.md',
-        count: 2
+        count: 3
     },
     {
         title: "What We're Doing",
@@ -21,12 +21,12 @@ var PAGES = [
     {
         title: "Products",
         source: 'content/02-01-products.md',
-        count: 4
+        count: 3
     },
     {
         title: "The Technology",
         source: 'content/02-02-the-technology.md',
-        count: 3
+        count: 4
     },
     {
         title: "More",
@@ -50,49 +50,29 @@ function sanitize(text) {
 }
 
 var animating = false;
-var startTime = null;
-var direction = 0;
-function beginAnimatingImage(_direction) {
-    animating = true;
-    direction = _direction;
-    window.requestAnimationFrame(animateImage);
-}
-
 var sectionIndex = 0;
 var imageIndex = 0;
-function animateImage(time) {
+function animateImage(direction) {
+    if (animating) return;
+    animating = true;
+
     var index = PAGES[sectionIndex].imageElements.length - imageIndex - 1;
     if (direction == 'backward') index++;
-    var startOffset = index * IMAGE_EXPOSED_PERCENT;
     var endOffset = 100;
     if (direction == 'backward') {
-        var tmp = startOffset;
-        startOffset = endOffset;
-        endOffset = tmp;
+        endOffset = index * IMAGE_EXPOSED_PERCENT;
     }
     var target = PAGES[sectionIndex].imageElements[index];
+    target.style.left = endOffset + '%';
 
-    if (!startTime) {
-        startTime = time;
-        target.style.left = startOffset + '%';
-    }
-
-    var timeProgress = (time - startTime)/1000;
-    if (timeProgress > IMAGE_DURATION) animating = false;
-    var progress = timeProgress/IMAGE_DURATION;
-
-    if (animating) {
-        window.requestAnimationFrame(animateImage);
-        target.style.left = lerp(startOffset, endOffset, progress) + '%';
-    } else {
-        startTime = null;
-        target.style.left = endOffset + '%';
+    window.setTimeout(function() {
+        animating = false;
         if (direction == 'forward') {
             imageIndex++;
         } else {
             imageIndex--;
         }
-    }
+    }, IMAGE_DURATION);
 }
 
 function animateSection(direction) {
@@ -145,6 +125,7 @@ function buildPage() {
 
         if (first) {
             first = false;
+            section.element.className = 'focus';
         } else {
             section.element.className = 'below';
         }
@@ -162,34 +143,37 @@ function buildPage() {
     });
 }
 
-function onScroll(delta) {
+function onScroll(event) {
+    event.preventDefault();
     if (animating) return;
-    if (delta.deltaY < 0) {
-        backwardState();
-    } else if (delta.deltaY > 0) {
-        forwardState();
+    if (event.deltaY < 0) {
+        backwardState(event);
+    } else if (event.deltaY > 0) {
+        forwardState(event);
     }
 }
 
-function forwardState() {
+function forwardState(event) {
+    event.preventDefault();
     if (animating) return;
     if (imageIndex >= PAGES[sectionIndex].count - 1) {
         if (sectionIndex < PAGES.length - 1) {
             animateSection('forward');
         }
     } else {
-        beginAnimatingImage('forward');
+        animateImage('forward');
     }
 }
 
-function backwardState() {
+function backwardState(event) {
+    event.preventDefault();
     if (animating) return;
     if (imageIndex == 0) {
         if (sectionIndex > 0) {
             animateSection('backward');
         }
     } else {
-        beginAnimatingImage('backward');
+        animateImage('backward');
     }
 }
 
