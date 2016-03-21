@@ -1,6 +1,24 @@
 body {
     margin: 0;
     overflow: hidden;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 36pt;
+    font-family: "Vollkorn", serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: "Vollkorn", serif;
+    font-size: 24pt;
+    font-weight: 400;
+}
+
+p, li {
+    font-size: 21px;
 }
 
 .button {
@@ -43,7 +61,14 @@ header {
 
 header h1 {
     margin: 0;
+    font-family: "Officina Sans";
+    font-weight: bold;
+    font-size: 38px;
 }
+
+.amazon { font-size: 42px; }
+.amazon sup { color: #F90; }
+.prime { color: #094; }
 
 section h1 {
     font-size: 50px;
@@ -92,3 +117,22 @@ article {
     height: 100vh;
     position: absolute;
 }
+
+/*
+@font-face {
+    font-family: "Officina Sans";
+    src: url(/fonts/ITC-Officina-Sans-LT-Book.ttf);
+    font-weight: normal;
+}
+*/ 
+
+@font-face {
+    font-family: "Officina Sans";
+    src: url(/fonts/ITC-Officina-Sans-LT-Bold.ttf);
+    font-weight: bold;
+}
+
+
+
+/*Lato*/
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
