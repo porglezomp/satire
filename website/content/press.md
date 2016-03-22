@@ -15,7 +15,7 @@ Unbiased reporting on the progress of the project, and how we're eliminating opp
 
 <div class="press">
 <h2>All of South America to Join Together, Sing Kumbaya in Celebration of the Arrival of the 22st Century on the Continent</h2>
-<i>March 15nd, 2016</i>
+<i>March 22nd, 2016</i>
 Amazon looks forward to being greeted as the Patron Saint of Progress in Bogotá next week as the first computers are dropped into the rainforest.
 </div>
 
