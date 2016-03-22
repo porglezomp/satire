@@ -181,6 +181,7 @@ function overlayFullText(event) {
     request.open('GET', '/content'+href+'.md', true);
     request.send();
     document.removeEventListener('wheel', onScroll);
+    document.getElementsByTagName('header')[0].className = 'white-header';
     event.preventDefault();
 }
 
@@ -192,7 +193,8 @@ function closeFullText(event) {
     PAGES[sectionIndex].imageElements.forEach(function(element) {
         element.className = 'image-container';
     });
-document.addEventListener('wheel', onScroll);
+    document.getElementsByTagName('header')[0].className = '';
+    document.addEventListener('wheel', onScroll);
 }
 
 function onScroll(event) {
