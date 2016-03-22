@@ -34,16 +34,43 @@ header {
     z-index: 10000;
 }
 
-header h1 {
+.show-satire header {
+    width: 100vw;
+    background: rgba(240, 240, 240, 0.9);
+}
+
+header h1, #about-toggle {
     margin: 0;
-    font-family: "Officina Sans";
     font-weight: bold;
-    font-size: 2.8vw;
     z-index: 1000;
 }
 
+#about-toggle {
+    position: fixed;
+    top: 0; right: 0;
+    text-transform: uppercase;
+    margin: 45px 40px;
+    font-size: 1.5vw;
+    cursor: pointer;
+    color: white;
+    z-index: 10000;
+    text-decoration: none;
+    transition: color 0.1s;
+}
+
+#about-toggle:before { content: "About"; }
+#about-toggle:hover { color: #AAA; }
+.show-satire #about-toggle:before { content: "Back"; }
+.show-satire #about-toggle { color: black; }
+.show-satire #about-toggle:hover { color: #666; }
+
+header h1 {
+    font-family: "Officina Sans";
+    font-size: 2.8vw;
+}
+
 /* Logo */
-.amazon { font-size: 3.3vw; }
+.amazon { font-size: 115%; }
 .amazon sup { color: #F90; font-size: 50%; }
 .rainforest { font-weight: normal; margin-left: -5px; }
 .prime { color: #094; }
@@ -133,8 +160,65 @@ sidebar article p { transition: margin 1s 0.3s; }
     color: black;
 }
 
-#close-text:hover {
-    color: grey;
+#close-text:hover { color: grey; }
+
+#about-satire {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw;
+    padding: 5px 40px;
+    background: #F90;
+    color: white;
+    box-sizing: border-box;
+    transition: top 2s;
+}
+
+#about-satire a { color: white; }
+#about-satire a:hover { color: #DDD; }
+#close-satire-notification:hover { background: #DDD; }
+
+#close-satire-notification:before {
+    font-weight: bold;
+    margin-left: -2px;
+    content: "×";
+    color: #F90;
+}
+
+#close-satire-notification {
+    position: absolute;
+    right: 40px;
+    width: 18px; height: 18px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+#satire {
+    position: absolute;
+    left: 100vw; top: 0;
+    width: 100vw; heigh opacity 0.5st: 100vh;
+    min-height: 100vh;
+    background: white;
+    z-index: 1000;
+    overflow: hidden;
+    transition: left 1s;
+}
+
+.show-satire #satire { height: auto; left: 0; }
+
+#satire article {
+    width: 35em;
+    padding: 70px 50px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1s 0.5s;
+}
+
+.show-satire #satire article {
+    opacity: 1;
+    transition: opacity 0.5s 0;
 }
 
 @font-face {

@@ -203,6 +203,7 @@ function onScroll(event) {
     if (event.deltaY < 0) {
         backwardState(event);
     } else if (event.deltaY > 0) {
+
         forwardState(event);
     }
 }
@@ -231,10 +232,56 @@ function backwardState(event) {
     }
 }
 
+function viewSatire(event) {
+    event.preventDefault();
+    closeSatireNotification(event);
+    document.body.className = 'show-satire';
+    document.getElementById('about-toggle').onclick = closeSatire;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            var text = sanitize(request.responseText);
+            var content = markdown.toHTML(text);
+            document.getElementById('satire-article').innerHTML = content;
+        }
+    };
+    var href = event.target.getAttribute('href');
+    request.open('GET', '/content'+href+'.md', true);
+    request.send();
+    document.removeEventListener('wheel', onScroll);
+}
+
+function closeSatire(event) {
+    event.preventDefault();
+    document.body.className = '';
+    document.getElementById('about-toggle').onclick = viewSatire;
+    document.addEventListener('wheel', onScroll);
+}
+
+function displaySatireNotification() {
+    if (!window.sessionStorage.getItem('no-nag')) {
+        document.getElementById('about-toggle').style.display = 'none';
+        window.setTimeout(function() {
+            document.getElementById('about-satire').style.top = '';
+        }, 10);
+    }
+}
+
+function closeSatireNotification(event) {
+    event.preventDefault();
+    window.sessionStorage.setItem('no-nag', true);
+    document.getElementById('about-toggle').style.display = '';
+    document.getElementById('about-satire').style.top = '-100px';
+}
+
 ready(function() {
     buildPage();
+    displaySatireNotification();
     document.addEventListener('wheel', onScroll);
     document.getElementById('up-button').onclick=backwardState;
     document.getElementById('down-button').onclick=forwardState;
     document.getElementById('close-text').onclick=closeFullText;
+    document.getElementById('close-satire-notification').onclick=closeSatireNotification;
+    document.getElementById('view-satire').onclick=viewSatire;
+    document.getElementById('about-toggle').onclick=viewSatire;
 });
