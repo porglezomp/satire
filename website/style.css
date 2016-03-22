@@ -137,6 +137,38 @@ sidebar article p { transition: margin 1s 0.3s; }
     color: grey;
 }
 
+#about-satire {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw;
+    padding: 5px 40px;
+    background: #F90;
+    color: white;
+    box-sizing: border-box;
+}
+
+#about-satire a { color: white; }
+#about-satire a:hover { color: #DDD; }
+#close-satire:hover { background: #DDD; }
+
+#close-satire:before {
+    font-weight: bold;
+    margin-left: -2px;
+    content: "×";
+    color: #F90;
+}
+
+#close-satire {
+    position: absolute;
+    right: 40px;
+    width: 18px; height: 18px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
 @font-face {
     font-family: "Officina Sans";
     src: url(/fonts/ITC-Officina-Sans-LT-Book-Logo.ttf);

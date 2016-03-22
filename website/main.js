@@ -231,10 +231,17 @@ function backwardState(event) {
     }
 }
 
+function closeSatireNotification(event) {
+    event.preventDefault();
+    var aboutBar = document.getElementById('about-satire');
+    aboutBar.style.top = '-100px';
+}
+
 ready(function() {
     buildPage();
     document.addEventListener('wheel', onScroll);
     document.getElementById('up-button').onclick=backwardState;
     document.getElementById('down-button').onclick=forwardState;
     document.getElementById('close-text').onclick=closeFullText;
+    document.getElementById('close-satire').onclick=closeSatireNotification;
 });
