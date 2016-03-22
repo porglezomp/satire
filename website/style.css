@@ -34,13 +34,34 @@ header {
     z-index: 10000;
 }
 
-header h1 {
+header h1, #about-toggle {
     margin: 0;
-    font-family: "Officina Sans";
     font-weight: bold;
-    font-size: 2.8vw;
     z-index: 1000;
     transition: font-size 1s;
+}
+
+#about-toggle {
+    position: fixed;
+    top: 0; right: 0;
+    text-transform: uppercase;
+    margin: 40px 40px;
+    font-size: 1.5vw;
+    cursor: pointer;
+    color: white;
+    z-index: 10000;
+    transition: color 0.1s;
+}
+
+#about-toggle:before { content: "About"; }
+#about-toggle:hover { color: #AAA; }
+.show-satire #about-toggle:before { content: "Back"; }
+.show-satire #about-toggle { color: black; }
+.show-satire #about-toggle:hover { color: #666; }
+
+header h1 {
+    font-family: "Officina Sans";
+    font-size: 2.8vw;
 }
 
 /* Logo */
@@ -50,7 +71,7 @@ header h1 {
 .prime { color: #094; }
 .white-header * { color: white !important; }
 header * { transition: color 0.5s; }
-header.smaller h1 { font-size: 2vw; }
+.show-satire header h1 { font-size: 2vw; }
 
 main section {
     position: absolute;
@@ -135,9 +156,7 @@ sidebar article p { transition: margin 1s 0.3s; }
     color: black;
 }
 
-#close-text:hover {
-    color: grey;
-}
+#close-text:hover { color: grey; }
 
 #about-satire {
     position: fixed;
@@ -175,7 +194,7 @@ sidebar article p { transition: margin 1s 0.3s; }
 #satire {
     position: absolute;
     left: 100vw; top: 0;
-    width: 100vw; height: auto;
+    width: 100vw; heigh opacity 0.5st: 100vh;
     min-height: 100vh;
     background: white;
     z-index: 1000;
@@ -183,7 +202,7 @@ sidebar article p { transition: margin 1s 0.3s; }
     transition: left 1s;
 }
 
-#satire.show { left: 0; }
+.show-satire #satire { height: auto; left: 0; }
 
 #satire article {
     width: 35em;
@@ -193,8 +212,9 @@ sidebar article p { transition: margin 1s 0.3s; }
     transition: opacity 1s 0.5s;
 }
 
-#satire.show article {
+.show-satire #satire article {
     opacity: 1;
+    transition: opacity 0.5s 0;
 }
 
 @font-face {

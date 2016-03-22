@@ -203,6 +203,7 @@ function onScroll(event) {
     if (event.deltaY < 0) {
         backwardState(event);
     } else if (event.deltaY > 0) {
+
         forwardState(event);
     }
 }
@@ -234,21 +235,22 @@ function backwardState(event) {
 function viewSatire(event) {
     event.preventDefault();
     closeSatireNotification(event);
-    document.getElementById('satire').className = 'show';
-    document.getElementsByTagName('header')[0].className = 'smaller';
+    document.body.className = 'show-satire';
+    document.getElementById('about-toggle').onclick = closeSatire;
     document.removeEventListener('wheel', onScroll);
 }
 
 function closeSatire(event) {
-    document.getElementById('satire').className = '';
-    document.getElementsByTagName('header')[0].className = '';
+    event.preventDefault();
+    document.body.className = '';
+    document.getElementById('about-toggle').onclick = viewSatire;
     document.addEventListener('wheel', onScroll);
 }
 
 function closeSatireNotification(event) {
     event.preventDefault();
-    var aboutBar = document.getElementById('about-satire');
-    aboutBar.style.top = '-100px';
+    document.getElementById('about-toggle').style.display = 'block';
+    document.getElementById('about-satire').style.top = '-100px';
 }
 
 ready(function() {
@@ -259,4 +261,6 @@ ready(function() {
     document.getElementById('close-text').onclick=closeFullText;
     document.getElementById('close-satire-notification').onclick=closeSatireNotification;
     document.getElementById('view-satire').onclick=viewSatire;
+    document.getElementById('about-toggle').style.display = 'none';
+    document.getElementById('about-toggle').onclick=viewSatire;
 });
