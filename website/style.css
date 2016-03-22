@@ -40,15 +40,17 @@ header h1 {
     font-weight: bold;
     font-size: 2.8vw;
     z-index: 1000;
+    transition: font-size 1s;
 }
 
 /* Logo */
-.amazon { font-size: 3.3vw; }
+.amazon { font-size: 115%; }
 .amazon sup { color: #F90; font-size: 50%; }
 .rainforest { font-weight: normal; margin-left: -5px; }
 .prime { color: #094; }
 .white-header * { color: white !important; }
 header * { transition: color 0.5s; }
+header.smaller h1 { font-size: 2vw; }
 
 main section {
     position: absolute;
@@ -145,20 +147,21 @@ sidebar article p { transition: margin 1s 0.3s; }
     background: #F90;
     color: white;
     box-sizing: border-box;
+    transition: top 2s;
 }
 
 #about-satire a { color: white; }
 #about-satire a:hover { color: #DDD; }
-#close-satire:hover { background: #DDD; }
+#close-satire-notification:hover { background: #DDD; }
 
-#close-satire:before {
+#close-satire-notification:before {
     font-weight: bold;
     margin-left: -2px;
     content: "×";
     color: #F90;
 }
 
-#close-satire {
+#close-satire-notification {
     position: absolute;
     right: 40px;
     width: 18px; height: 18px;
@@ -167,6 +170,31 @@ sidebar article p { transition: margin 1s 0.3s; }
     cursor: pointer;
     text-align: center;
     display: inline-block;
+}
+
+#satire {
+    position: absolute;
+    left: 100vw; top: 0;
+    width: 100vw; height: auto;
+    min-height: 100vh;
+    background: white;
+    z-index: 1000;
+    overflow: hidden;
+    transition: left 1s;
+}
+
+#satire.show { left: 0; }
+
+#satire article {
+    width: 35em;
+    padding: 0 50px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1s 0.5s;
+}
+
+#satire.show article {
+    opacity: 1;
 }
 
 @font-face {

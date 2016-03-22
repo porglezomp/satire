@@ -231,6 +231,20 @@ function backwardState(event) {
     }
 }
 
+function viewSatire(event) {
+    event.preventDefault();
+    closeSatireNotification(event);
+    document.getElementById('satire').className = 'show';
+    document.getElementsByTagName('header')[0].className = 'smaller';
+    document.removeEventListener('wheel', onScroll);
+}
+
+function closeSatire(event) {
+    document.getElementById('satire').className = '';
+    document.getElementsByTagName('header')[0].className = '';
+    document.addEventListener('wheel', onScroll);
+}
+
 function closeSatireNotification(event) {
     event.preventDefault();
     var aboutBar = document.getElementById('about-satire');
@@ -243,5 +257,6 @@ ready(function() {
     document.getElementById('up-button').onclick=backwardState;
     document.getElementById('down-button').onclick=forwardState;
     document.getElementById('close-text').onclick=closeFullText;
-    document.getElementById('close-satire').onclick=closeSatireNotification;
+    document.getElementById('close-satire-notification').onclick=closeSatireNotification;
+    document.getElementById('view-satire').onclick=viewSatire;
 });
