@@ -34,22 +34,27 @@ header {
     z-index: 10000;
 }
 
+.show-satire header {
+    width: 100vw;
+    background: rgba(240, 240, 240, 0.9);
+}
+
 header h1, #about-toggle {
     margin: 0;
     font-weight: bold;
     z-index: 1000;
-    transition: font-size 1s;
 }
 
 #about-toggle {
     position: fixed;
     top: 0; right: 0;
     text-transform: uppercase;
-    margin: 40px 40px;
+    margin: 45px 40px;
     font-size: 1.5vw;
     cursor: pointer;
     color: white;
     z-index: 10000;
+    text-decoration: none;
     transition: color 0.1s;
 }
 
@@ -71,7 +76,6 @@ header h1 {
 .prime { color: #094; }
 .white-header * { color: white !important; }
 header * { transition: color 0.5s; }
-.show-satire header h1 { font-size: 2vw; }
 
 main section {
     position: absolute;
@@ -206,7 +210,7 @@ sidebar article p { transition: margin 1s 0.3s; }
 
 #satire article {
     width: 35em;
-    padding: 0 50px;
+    padding: 70px 50px;
     margin: 0 auto;
     opacity: 0;
     transition: opacity 1s 0.5s;

@@ -237,6 +237,17 @@ function viewSatire(event) {
     closeSatireNotification(event);
     document.body.className = 'show-satire';
     document.getElementById('about-toggle').onclick = closeSatire;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            var text = sanitize(request.responseText);
+            var content = markdown.toHTML(text);
+            document.getElementById('satire-article').innerHTML = content;
+        }
+    };
+    var href = event.target.getAttribute('href');
+    request.open('GET', '/content'+href+'.md', true);
+    request.send();
     document.removeEventListener('wheel', onScroll);
 }
 
