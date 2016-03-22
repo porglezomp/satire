@@ -30,8 +30,10 @@ ASUS 27" HD Monitor
 --------
 
 $218.79
+
 - Offered at a 25% savings.
 - Necessary to access Rainforest Prime.
+
 [http://www.amazon.com/ASUS-VE278H-1920x1080-Back-lit-Monitor/dp/B0099XBO5E/ref=sr_1_50?s=pc&ie=UTF8&qid=1458501610&sr=1-50&keywords=monitor]
 
 AmazonBasics Mouse
@@ -39,6 +41,7 @@ AmazonBasics Mouse
 
 - Wired mouse makes it harder to lose the mouse.
 - Obvious connection to the computer means Natives will be less likely to treat the mouse as witchcraft.
+
 [http://www.amazon.com/AmazonBasics-3-Button-Wired-Mouse-Black/dp/B005EJH6RW/ref=sr_1_2?ie=UTF8&qid=1458501440&sr=8-2&keywords=amazonbasics+mouse]
 
 Five-mile-long Extension Cord
@@ -56,7 +59,7 @@ Great Books of the Western World
 The Amazonian People have never before had access to these books. Amazon is offering the chance to advance into the 21st century and become truly civilized.	
 
 1kg Pure Pyrite Slab
------------- 
+--------------------
 
 - 1kg samples of pyrite can be used as a discount alternative to real gold. 
 - Can be used as full bricks
