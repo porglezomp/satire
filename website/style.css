@@ -67,6 +67,8 @@ header h1, #about-toggle {
 .show-satire #about-toggle:before { content: "Back"; }
 .show-satire #about-toggle { color: black; }
 .show-satire #about-toggle:hover { color: #666; }
+.full-text #about-toggle { display: none; }
+.full-text #down-button { display: none; }
 
 header h1 {
     font-family: "Officina Sans";
