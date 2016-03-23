@@ -5,9 +5,10 @@ body {
     font-weight: normal;
 }
 
-h1, h2 {
-    color: #0C5423;
-}
+a { color: #094; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2 { color: #0C5423; }
 
 h1 {
     font-size: 3.6vw;
