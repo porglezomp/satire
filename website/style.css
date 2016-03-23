@@ -278,7 +278,7 @@ sidebar article p { transition: margin 1s 0.3s; }
     left: 0; top: 0;
     width: 100vw;
     padding: 5px 40px;
-    background: #0C5423;
+    background: #094;
     color: white;
     box-sizing: border-box;
     transition: top 2s;
@@ -292,7 +292,7 @@ sidebar article p { transition: margin 1s 0.3s; }
     font-weight: bold;
     margin-left: -2px;
     content: "×";
-    color: #F90;
+    color: #094;
 }
 
 #close-satire-notification {
@@ -336,11 +336,29 @@ sidebar article p { transition: margin 1s 0.3s; }
 .above .video-container { position: relative; bottom: 100vh; }
 .video-container {
     margin: 100px auto; 
-    width: 960px;
-    height: 540px;
+    width: 880px;
+    height: 495px;
     bottom: 0;
     transition: bottom 1s;
 }
+
+.nav-button {
+    position: absolute;
+    left: 20vw;
+    box-sizing: border-box;
+    display: block;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 100%;
+    font-size: 32px;
+    text-align: center;
+    cursor: pointer;
+    transform: translateX(-21px);
+    transition: left 1s, opacity 1s;
+}
+
+#down-button { bottom: 20px; }
+#down-button:before { content: "▼"; }
+.video #down-button { left: 50vw; }
 
 @font-face {
     font-family: "Officina Sans";
