@@ -1,0 +1,402 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Lato", sans-serif;
+    font-weight: normal;
+}
+
+a { color: #094; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2 { color: #0C5423; }
+
+h1 {
+    font-size: 3.6vw;
+    font-family: "Vollkorn", serif;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: "Vollkorn", serif;
+    font-size: 2.8vw;
+    font-weight: normal;
+}
+
+p, li { font-size: 20px; }
+a {  color: #F90;}
+sidebar {
+    position: fixed;
+    left: 0; right: 0; top: 0; bottom: 0;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    height: 100px;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    z-index: 10000;
+}
+
+.show-satire header {
+    width: 100vw;
+    background: rgba(240, 240, 240, 0.9);
+}
+
+header h1, #about-toggle {
+    margin: 0;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+#about-toggle {
+    position: fixed;
+    top: 0; right: 0;
+    text-transform: uppercase;
+    margin: 45px 40px;
+    font-size: 1.5vw;
+    cursor: pointer;
+    color: white;
+    z-index: 10000;
+    text-decoration: none;
+    transition: color 1s;
+}
+
+#about-toggle:before { content: "About"; }
+#about-toggle:hover { color: #AAA; }
+.show-satire #about-toggle:before { content: "Back"; }
+.show-satire #about-toggle { color: black; }
+.show-satire #about-toggle:hover { color: #666; }
+.full-text #about-toggle { display: none; }
+.full-text #down-button { display: none; }
+
+header h1 {
+    font-family: "Officina Sans";
+    font-size: 2.8vw;
+}
+
+/* Logo */
+.amazon { font-size: 115%; }
+.amazon sup { color: #F90; font-size: 50%; }
+.rainforest { font-weight: normal; margin-left: -5px; }
+.prime { color: #0C5423; }
+.video header *, .white-header * { color: white !important; }
+header * { transition: color 0.5s; }
+
+main {
+    width: 100vw; height: 100vh;
+    background: white;
+    transition: background 1s;
+}
+
+.video main {
+    background: #0C5423;
+}
+
+.video iframe {
+    margin: 0 auto;
+}
+
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 100vh;
+    transition: top 0.8s;
+}
+
+sidebar article {
+    position: relative;
+    left: 0; top: 100px;
+    width: 40vw; height: 100vh;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    transition: opacity 0.2s;
+}
+
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+}
+
+sidebar article h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.image-stack-container {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60vw; height: 100vh;
+    transition: width 0.5s;
+}
+
+.image-container {
+    position: absolute;
+    width: 60vw; height: 100vh;
+    transition: left 0.6s;
+    background-size: cover;
+}
+
+.above { top: -100vh; }
+.below { top: 100vh; }
+.focus { top: 0; }
+.above article, .below article { opacity: 0; }
+.below .image-container { left: 0 !important; }
+sidebar article p { transition: margin 1s 0.3s; }
+.above article p { margin-top: -50px; }
+.below article p { margin-top: 100px; }
+.stick-left { left: 0 !important; }
+.focus article {
+    opacity: 1;
+    transition-duration: 0.5s;
+    transition-delay: 0.4s;
+}
+
+#full-text {
+    position: absolute;
+    left: 50vw; right: 0;
+    min-width: 50vw;
+    padding: 50px;
+    /* z-index: through-the-moon; */
+    min-height: 100vh;
+    height: auto;
+    z-index: 1000;
+    background: white;
+    transition: left 0.5s;
+    box-sizing: border-box;
+}
+
+#full-text.collapsed {
+    left: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#close-text {
+    position: fixed;
+    margin-left: -38px;
+    margin-top: -10px;
+    font-size: 32px;
+    text-decoration: none;
+    color: black;
+}
+
+#close-text:hover { color: grey; }
+
+#about-satire {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw;
+    padding: 5px 40px;
+    background: ;
+}
+
+.video iframe {
+    margin: 0 auto;
+}
+
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 100vh;
+    transition: top 0.8s;
+}
+
+sidebar article {
+    position: relative;
+    left: 0; top: 100px;
+    width: 40vw; height: 100vh;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    transition: opacity 0.2s;
+}
+
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+}
+
+sidebar article h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.image-stack-container {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60vw; height: 100vh;
+    transition: width 0.5s;
+}
+
+.image-container {
+    position: absolute;
+    width: 60vw; height: 100vh;
+    transition: left 0.6s;
+}
+
+.above { top: -100vh; }
+.below { top: 100vh; }
+.focus { top: 0; }
+.above article, .below article { opacity: 0; }
+.below .image-container { left: 0 !important; }
+sidebar article p { transition: margin 1s 0.3s; }
+.above article p { margin-top: -50px; }
+.below article p { margin-top: 100px; }
+.stick-left { left: 0 !important; }
+.focus article {
+    opacity: 1;
+    transition-duration: 0.5s;
+    transition-delay: 0.4s;
+}
+
+#full-text {
+    position: absolute;
+    left: 50vw; right: 0;
+    min-width: 50vw;
+    padding: 50px;
+    /* z-index: through-the-moon; */
+    min-height: 100vh;
+    height: auto;
+    z-index: 1000;
+    background: white;
+    transition: left 0.5s;
+    box-sizing: border-box;
+}
+
+#full-text.collapsed {
+    left: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#close-text {
+    position: fixed;
+    margin-left: -38px;
+    margin-top: -10px;
+    font-size: 32px;
+    text-decoration: none;
+    color: black;
+}
+
+#close-text:hover { color: grey; }
+
+#about-satire {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw;
+    padding: 5px 40px;
+    background: #094;
+    color: white;
+    box-sizing: border-box;
+    transition: top 2s;
+}
+
+#about-satire a { color: white; }
+#about-satire a:hover { color: #DDD; }
+#close-satire-notification:hover { background: #DDD; }
+
+#close-satire-notification:before {
+    font-weight: bold;
+    margin-left: -2px;
+    content: "×";
+    color: #094;
+}
+
+#close-satire-notification {
+    position: absolute;
+    right: 40px;
+    width: 18px; height: 18px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+#satire {
+    position: absolute;
+    left: 100vw; top: 0;
+    width: 100vw; heigh opacity 0.5st: 100vh;
+    min-height: 100vh;
+    background: white;
+    z-index: 1000;
+    overflow: hidden;
+    transition: left 1s;
+}
+
+.show-satire #satire { height: auto; left: 0; }
+
+#satire article {
+    width: 35em;
+    padding: 70px 50px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1s 0.5s;
+}
+
+img {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.show-satire #satire article {
+    opacity: 1;
+    transition: opacity 0.5s 0;
+}
+
+.video-container iframe { width: 100%; height: 100%; }
+.above .video-container { position: relative; bottom: 100vh; }
+.video-container {
+    width: 142vh; height: 80vh;
+    bottom: 0;
+    margin: 100px auto; 
+    transition: bottom 1s;
+}
+
+@media (max-width: 142vh) {
+    .video-container { width: 120vh; height: 67.5vh; }
+}
+@media (max-width: 120vh) {
+    .video-container { width: 100vh; height: 56.25vh; }
+}
+@media (max-width: 100vh) {
+    .video-container { width: 100vw; height: 56.25vw; }
+}
+
+.nav-button {
+    position: absolute;
+    left: 20vw;
+    box-sizing: border-box;
+    display: block;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 100%;
+    font-size: 32px;
+    text-align: center;
+    cursor: pointer;
+    transform: translateX(-21px);
+    transition: left 1s, opacity 1s;
+}
+
+#down-button { bottom: 20px; }
+#down-button:before { content: "▼"; }
+.video #down-button { left: 50vw; }
+
+.press h2 { font-size: 2vw; }
+.press i { display: block; padding-bottom: 12px; }
+.press { border-bottom: 1px solid #0C5423; padding-bottom: 24px; }
+
+@font-face {
+    font-family: "Officina Sans";
+    src: url(/fonts/ITC-Officina-Sans-LT-Book-Logo.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Officina Sans";
+    src: url(/fonts/ITC-Officina-Sans-LT-Bold-Logo.ttf);
+    font-weight: bold;
+}
+
+/*Lato*/
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
