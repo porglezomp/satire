@@ -11,37 +11,37 @@ var PAGES = [
         title: "The Problem",
         source: 'content/01-00-the-problem.md',
         count: 4,
-        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
+        images: ['headdress.jpg', 'so-many-feathers.jpg', 'red-tribe.jpg', 'huni-kuni.jpg']
     },
     {
         title: "Why Amazon?",
         source: 'content/01-01-why-amazon.md',
         count: 3,
-        images: ['kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
+        images: ['lots-of-trees.jpg', 'tree-above.jpg', 'vine-tree.jpg']
     },
     {
         title: "What We're Doing",
         source: 'content/02-00-what-were-doing.md',
-        count: 4,
-        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
+        count: 6,
+        images: ['cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg', 'cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg',  'cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg']  
     },
     {
         title: "Products",
         source: 'content/02-01-products.md',
         count: 3,
-        images: ['kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
+        images: ['man-with-leaves.jpg', 'xingu.jpg', 'arrers.jpg']
     },
     {
         title: "The Technology",
         source: 'content/02-02-the-technology.md',
-        count: 4,
-        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
+        count: 3,
+        images: ['vine-tree.jpg', 'its-another-tree.jpg', 'rainforest-canopy.jpg'] 
     },
     {
         title: "More",
         source: 'content/03-00-more.md',
-        count: 5,
-        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg', 'uncontacted-tribe.jpg']
+        count: 25,
+        images: ['cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg']
     }
 ];
 
