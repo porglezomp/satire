@@ -36,7 +36,6 @@ Activated Carbon Water Filters
 ASUS 27" HD Monitor
 --------
 
-$218.79
 
 - Offered at a 25% savings.
 - Necessary to access Rainforest Prime.
@@ -58,7 +57,6 @@ Logitech B100-TAA Optical USB Mouse
 Five-mile-long Extension Cord
 ---------------------
 
-$6,032
 An absolute necessity for complicated political reasons.
 
 Great Books of the Western World

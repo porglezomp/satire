@@ -26,8 +26,7 @@ Composed of 7 sheets of an ultra-tough material called "Vectran", the balloons a
 
 Watch the latest test NASA did with us:
 
-<iframe width="420" height="315"
-src="https://youtu.be/KyktvC7w7Js?t=56s">
+<iframe width="420" height="315" src="https://youtu.be/KyktvC7w7Js?t=56s">
 </iframe>
 
 With a 400 million  dollar test payload, we're reasonably sure the computers will land safely.
