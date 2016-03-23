@@ -40,7 +40,7 @@ var PAGES = [
     {
         title: "More",
         source: 'content/03-00-more.md',
-        count: 25,
+        count: 6,
         images: ['cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg','cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg']
     }
 ];
