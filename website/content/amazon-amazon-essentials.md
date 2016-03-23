@@ -36,20 +36,18 @@ Activated Carbon Water Filters
 ASUS 27" HD Monitor
 --------
 
+<iframe class="amazon-embed" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rainforestpri-20&marketplace=amazon&region=US&placement=B00DX64DCY&asins=B00DX64DCY&linkId=UJKCKGHSKXX4EHLX&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0C5423&bg_color=FFFFFF"></iframe>
 
 - Offered at a 25% savings.
 - Necessary to access Rainforest Prime.
 
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rainforestpri-20&marketplace=amazon&region=US&placement=B00DX64DCY&asins=B00DX64DCY&linkId=UJKCKGHSKXX4EHLX&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0C5423&bg_color=FFFFFF">
-
 Logitech B100-TAA Optical USB Mouse
 -----------------
 
+<iframe class="amazon-embed" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rainforestpri-20&marketplace=amazon&region=US&placement=B003L62T7W&asins=B003L62T7W&linkId=FLUNKDNGHUFVR2S2&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0C5423&bg_color=FFFFFF"></iframe>
+
 - Wired mouse makes it harder to lose the mouse.
 - Obvious connection to the computer means Natives will be less likely to treat the mouse as witchcraft.
-
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rainforestpri-20&marketplace=amazon&region=US&placement=B003L62T7W&asins=B003L62T7W&linkId=FLUNKDNGHUFVR2S2&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0C5423&bg_color=FFFFFF">
-</iframe>
 
 !Complicated political reasons is pretty obviously a euphemism for something, though we don't know what. It's meant to save face for Amazon, because they didn't consider how to actually power the computers. 
 !Uses the ludicrous to make the proposition even more absurd. Technically the solution works, but in practice that's completely ridiculous.

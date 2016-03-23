@@ -5,7 +5,7 @@ The Technology
 The Computers
 -------------
 
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rainforestpri-20&marketplace=amazon&region=US&placement=B011MV40YW&asins=B011MV40YW&linkId=4BQNBXODKUBGR5VH&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0C5423&bg_color=FFFFFF">
+<iframe class="amazon-embed" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rainforestpri-20&marketplace=amazon&region=US&placement=B011MV40YW&asins=B011MV40YW&linkId=4BQNBXODKUBGR5VH&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0C5423&bg_color=FFFFFF">
 </iframe>
 
 
@@ -26,7 +26,7 @@ Composed of 7 sheets of an ultra-tough material called "Vectran", the balloons a
 
 Watch the latest test NASA did with us:
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/KyktvC7w7Js?start=56" frameborder="0" allowfullscreen modestbranding="1"></iframe>
+<div id="marsvideo"><iframe width="420" height="315" src="https://www.youtube.com/embed/KyktvC7w7Js?start=56" frameborder="0" allowfullscreen modestbranding="1"></iframe></div>
 
 With a 400 million  dollar test payload, we're reasonably sure the computers will land safely.
 

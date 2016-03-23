@@ -253,6 +253,7 @@ function backwardState(event) {
 
 function viewSatire(event) {
     event.preventDefault();
+    closeFullText(event);
     closeSatireNotification(event);
     document.body.className = 'show-satire';
     document.getElementById('about-toggle').onclick = closeSatire;
