@@ -38,3 +38,10 @@ We have lots of pictures that don't actually add any information to the content 
 Putting all the content on a single page with no full page loading is very trendy, and is also overkill.
 
 In addition, the professionalism of the navigation and animation lends more credibility to the content of the satire, which makes all of the absurdities that much more absurd.
+
+The concept is a burlesque of internet.org. It exaggerates all of the worst parts of the site in an effort to make them more obvious, and to showcase just how problematic they really are. Our Myths and Facts is one of the strongest examples of this. 
+
+We make substantial use of dramatic irony through a naïf narrator. The work is written from the perpsective of someone with definite drive, definite passion, but they can't see the grander picture. This comes up very frequently in the promo video.
+
+We also use some clever word play, double entendres, euphemisms, and puns. This is interspersed throughout.
+
