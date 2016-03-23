@@ -22,8 +22,8 @@ var PAGES = [
     {
         title: "What We're Doing",
         source: 'content/02-00-what-were-doing.md',
-        count: 6,
-        images: ['cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg', 'cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg',  'cacao-tree.jpg', 'my-god-its-full-of-feathers.jpg']  
+        count: 3,
+        images: ["bird.jpg", "yo-bird.jpg", "yo-yo-bird.jpg"]  
     },
     {
         title: "Products",
