@@ -202,6 +202,7 @@ function overlayFullText(event) {
     request.send();
     document.removeEventListener('wheel', onScroll);
     document.getElementsByTagName('header')[0].className = 'white-header';
+    document.body.className = 'full-text';
     event.preventDefault();
 }
 
@@ -213,6 +214,7 @@ function closeFullText(event) {
     PAGES[sectionIndex].imageElements.forEach(function(element) {
         element.className = 'image-container';
     });
+    document.body.className = PAGES[sectionIndex].type;
     document.getElementsByTagName('header')[0].className = '';
     document.addEventListener('wheel', onScroll);
 }

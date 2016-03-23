@@ -5,6 +5,11 @@ body {
     font-weight: normal;
 }
 
+a { color: #094; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2 { color: #0C5423; }
+
 h1 {
     font-size: 3.6vw;
     font-family: "Vollkorn", serif;
@@ -63,6 +68,8 @@ header h1, #about-toggle {
 .show-satire #about-toggle:before { content: "Back"; }
 .show-satire #about-toggle { color: black; }
 .show-satire #about-toggle:hover { color: #666; }
+.full-text #about-toggle { display: none; }
+.full-text #down-button { display: none; }
 
 header h1 {
     font-family: "Officina Sans";
@@ -373,6 +380,10 @@ img {
 #down-button { bottom: 20px; }
 #down-button:before { content: "▼"; }
 .video #down-button { left: 50vw; }
+
+.press h2 { font-size: 2vw; }
+.press i { display: block; padding-bottom: 12px; }
+.press { border-bottom: 1px solid #0C5423; padding-bottom: 24px; }
 
 @font-face {
     font-family: "Officina Sans";
