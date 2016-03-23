@@ -12,4 +12,5 @@ Amazon's fleet of drones and extensive marketplace is already the envy of the wo
 Anyone and everyone living anywhere in the Amazon is eligible for Rainforest Prime, offering products they couldn't have dreamed about before today.
 
 We're excited to get started on this initiative. We hope you are too:
-[Donate today](amazon.racing)
+
+[Donate today](http://amazon.racing)
