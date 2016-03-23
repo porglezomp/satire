@@ -9,37 +9,37 @@ var PAGES = [
     },
     {
         title: "The Problem",
-        source: 'content/01-00-the-problem.md',
+        source: '01-00-the-problem',
         count: 4,
         images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "Why Amazon?",
-        source: 'content/01-01-why-amazon.md',
+        source: '01-01-why-amazon',
         count: 3,
         images: ['kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "What We're Doing",
-        source: 'content/02-00-what-were-doing.md',
+        source: '02-00-what-were-doing',
         count: 4,
         images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "Products",
-        source: 'content/02-01-products.md',
+        source: '02-01-products',
         count: 3,
         images: ['kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "The Technology",
-        source: 'content/02-02-the-technology.md',
+        source: '02-02-the-technology',
         count: 4,
         images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "More",
-        source: 'content/03-00-more.md',
+        source: '03-00-more',
         count: 5,
         images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg', 'uncontacted-tribe.jpg']
     }
@@ -64,7 +64,6 @@ function getLinkElementByHref(href) {
 }
 
 function lerp(x0, x1, t) { return x0 + (x1 - x0) * t; }
-function sanitize(text) { return text.replace(/^!.*\n?/gm, ''); }
 
 var animating = false;
 var sectionIndex = 0;
@@ -168,16 +167,14 @@ function buildPage() {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if (request.readyState == 4 && request.status == 200) {
-                var text = sanitize(request.responseText);
-                var content = markdown.toHTML(text);
-                articleNode.insertAdjacentHTML('beforeend', content);
+                articleNode.insertAdjacentHTML('beforeend', request.responseText);
                 var links = articleNode.getElementsByTagName('a');
                 [].forEach.call(links, function(link) {
                     link.onclick = overlayFullText;
                 });
             }
         };
-        request.open('GET', section.source, true);
+        request.open('GET', '/content/' + section.source + '.html', true);
         request.send();
     });
     document.body.className = PAGES[sectionIndex].type;
@@ -190,11 +187,9 @@ function overlayFullText(event) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-            var text = sanitize(request.responseText);
-            var content = markdown.toHTML(text);
             var sidebar = document.getElementById('full-text');
             sidebar.className = '';
-            document.getElementById('full-article').innerHTML = content;
+            document.getElementById('full-article').innerHTML = request.responseText;
             [].forEach.call(
                 document.getElementsByClassName('image-stack-container'),
                 function(c) { c.style.width = '100%'; });
@@ -203,7 +198,7 @@ function overlayFullText(event) {
             });
         }
     };
-    request.open('GET', '/content'+href+'.md', true);
+    request.open('GET', '/content'+href+'.html', true);
     request.send();
     document.removeEventListener('wheel', onScroll);
     document.getElementsByTagName('header')[0].className = 'white-header';
@@ -264,13 +259,11 @@ function viewSatire(event) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-            var text = sanitize(request.responseText);
-            var content = markdown.toHTML(text);
-            document.getElementById('satire-article').innerHTML = content;
+            document.getElementById('satire-article').innerHTML = request.responseText;
         }
     };
     var href = event.target.getAttribute('href');
-    request.open('GET', '/content'+href+'.md', true);
+    request.open('GET', '/content'+href+'.html', true);
     request.send();
     document.removeEventListener('wheel', onScroll);
 }
