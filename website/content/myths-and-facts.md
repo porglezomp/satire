@@ -1,5 +1,7 @@
 Myths and Facts
 ===============
+!A burlesque of the myths and facts page on internet.org.
+!Created to showcase the weakness of the answers on internet.org, and the number of strawman fallacies that it falls into.
 
 **Myth: Amazon got into this just to get rich off of a poor impoverished group of people.**
 
