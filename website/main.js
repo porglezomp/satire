@@ -3,6 +3,11 @@ var IMAGE_DURATION = 600;
 var IMAGE_EXPOSED_PERCENT = 5;
 var PAGES = [
     {
+        title: '',
+        type: 'video',
+        count: 0
+    },
+    {
         title: "The Problem",
         source: 'content/01-00-the-problem.md',
         count: 4,
@@ -41,7 +46,7 @@ var PAGES = [
 ];
 
 function ready(fn) {
-    if (document.readyState != 'loading'){
+    if (document.readyState != 'loading') {
         fn();
     } else {
         document.addEventListener('DOMContentLoaded', fn);
@@ -59,10 +64,7 @@ function getLinkElementByHref(href) {
 }
 
 function lerp(x0, x1, t) { return x0 + (x1 - x0) * t; }
-
-function sanitize(text) {
-    return text.replace(/^!.*\n?/gm, '');
-}
+function sanitize(text) { return text.replace(/^!.*\n?/gm, ''); }
 
 var animating = false;
 var sectionIndex = 0;
@@ -77,8 +79,10 @@ function animateImage(direction) {
     if (direction == 'backward') {
         endOffset = index * IMAGE_EXPOSED_PERCENT;
     }
-    var target = PAGES[sectionIndex].imageElements[index];
-    target.style.left = endOffset + '%';
+    if (PAGES[sectionIndex].count) {
+        var target = PAGES[sectionIndex].imageElements[index];
+        target.style.left = endOffset + '%';
+    }
 
     window.setTimeout(function() {
         animating = false;
@@ -94,15 +98,18 @@ function animateSection(direction) {
     if (animating) return;
     animating = true;
     var current = PAGES[sectionIndex];
-    var target;
+    var targetIndex = sectionIndex;
     if (direction == 'forward') {
-        target = PAGES[sectionIndex + 1];
+        targetIndex++;
         current.element.className = 'above';
     } else {
-        target = PAGES[sectionIndex - 1];
+        targetIndex--;
         current.element.className = 'below';
     }
+    var target = PAGES[targetIndex];
     target.element.className = 'focus';
+    document.body.className = target.type || '';
+    pauseYouTubeVideo();
 
     window.setTimeout(function() {
         animating = false;
@@ -118,8 +125,7 @@ function animateSection(direction) {
 
 function buildPage() {
     var sidebar = document.getElementsByTagName('sidebar')[0];
-    var first = true;
-    PAGES.forEach(function(section) {
+    PAGES.forEach(function(section, i) {
         section.element = document.createElement('section');
         sidebar.appendChild(section.element);
         var articleNode = document.createElement('article');
@@ -142,12 +148,22 @@ function buildPage() {
             imageContainer.appendChild(image);
         }
 
-        if (first) {
-            first = false;
+        if (i === 0) {
             section.element.className = 'focus';
+            section.element.innerHTML = '<div class="video-container"><iframe id="promo-video" src="//www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" modestbranding="1" allowfullscreen></iframe></div>';
+            function infect(element, event, fn) {
+                element.addEventListener(event, onScroll);
+                var children = element.childNodes;
+                for (var i = 0; i < children.length; i++) {
+                    infect(children[i], event, fn);
+                }
+            }
+            infect(document.getElementById('promo-video'), 'wheel', onScroll);
         } else {
             section.element.className = 'below';
         }
+
+        if (!section.source) return;
 
         var request = new XMLHttpRequest();
         request.onreadystatechange = function() {
@@ -164,6 +180,7 @@ function buildPage() {
         request.open('GET', section.source, true);
         request.send();
     });
+    document.body.className = PAGES[sectionIndex].type;
 }
 
 function overlayFullText(event) {
@@ -211,7 +228,6 @@ function onScroll(event) {
     if (event.deltaY < 0) {
         backwardState(event);
     } else if (event.deltaY > 0) {
-
         forwardState(event);
     }
 }
@@ -261,14 +277,13 @@ function viewSatire(event) {
 
 function closeSatire(event) {
     event.preventDefault();
-    document.body.className = '';
+    document.body.className = PAGES[sectionIndex].type || '';
     document.getElementById('about-toggle').onclick = viewSatire;
     document.addEventListener('wheel', onScroll);
 }
 
 function displaySatireNotification() {
     if (!window.sessionStorage.getItem('no-nag')) {
-        document.getElementById('about-toggle').style.display = 'none';
         window.setTimeout(function() {
             document.getElementById('about-satire').style.top = '';
         }, 10);
@@ -278,18 +293,22 @@ function displaySatireNotification() {
 function closeSatireNotification(event) {
     event.preventDefault();
     window.sessionStorage.setItem('no-nag', true);
-    document.getElementById('about-toggle').style.display = '';
     document.getElementById('about-satire').style.top = '-100px';
+}
+
+function pauseYouTubeVideo() {
+    document.getElementById('promo-video').contentWindow
+        .postMessage('{"event": "command", "func": "pauseVideo", "arg": ""}', '*');
 }
 
 ready(function() {
     buildPage();
     displaySatireNotification();
     document.addEventListener('wheel', onScroll);
-    document.getElementById('up-button').onclick=backwardState;
     document.getElementById('down-button').onclick=forwardState;
     document.getElementById('close-text').onclick=closeFullText;
-    document.getElementById('close-satire-notification').onclick=closeSatireNotification;
+    document.getElementById('close-satire-notification')
+        .onclick=closeSatireNotification;
     document.getElementById('view-satire').onclick=viewSatire;
     document.getElementById('about-toggle').onclick=viewSatire;
 });

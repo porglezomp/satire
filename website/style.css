@@ -55,7 +55,7 @@ header h1, #about-toggle {
     color: white;
     z-index: 10000;
     text-decoration: none;
-    transition: color 0.1s;
+    transition: color 1s;
 }
 
 #about-toggle:before { content: "About"; }
@@ -73,9 +73,23 @@ header h1 {
 .amazon { font-size: 115%; }
 .amazon sup { color: #F90; font-size: 50%; }
 .rainforest { font-weight: normal; margin-left: -5px; }
-.prime { color: #094; }
-.white-header * { color: white !important; }
+.prime { color: #0C5423; }
+.video header *, .white-header * { color: white !important; }
 header * { transition: color 0.5s; }
+
+main {
+    width: 100vw; height: 100vh;
+    background: white;
+    transition: background 1s;
+}
+
+.video main {
+    background: #0C5423;
+}
+
+.video iframe {
+    margin: 0 auto;
+}
 
 main section {
     position: absolute;
@@ -167,7 +181,104 @@ sidebar article p { transition: margin 1s 0.3s; }
     left: 0; top: 0;
     width: 100vw;
     padding: 5px 40px;
-    background: #F90;
+    background: ;
+}
+
+.video iframe {
+    margin: 0 auto;
+}
+
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 100vh;
+    transition: top 0.8s;
+}
+
+sidebar article {
+    position: relative;
+    left: 0; top: 100px;
+    width: 40vw; height: 100vh;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    transition: opacity 0.2s;
+}
+
+main section {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+}
+
+sidebar article h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.image-stack-container {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60vw; height: 100vh;
+    transition: width 0.5s;
+}
+
+.image-container {
+    position: absolute;
+    width: 100vw; height: 100vh;
+    transition: left 0.6s;
+}
+
+.above { top: -100vh; }
+.below { top: 100vh; }
+.focus { top: 0; }
+.above article, .below article { opacity: 0; }
+.below .image-container { left: 0 !important; }
+sidebar article p { transition: margin 1s 0.3s; }
+.above article p { margin-top: -50px; }
+.below article p { margin-top: 100px; }
+.stick-left { left: 0 !important; }
+.focus article {
+    opacity: 1;
+    transition-duration: 0.5s;
+    transition-delay: 0.4s;
+}
+
+#full-text {
+    position: absolute;
+    left: 50vw; right: 0;
+    min-width: 50vw;
+    padding: 50px;
+    /* z-index: through-the-moon; */
+    min-height: 100vh;
+    height: auto;
+    z-index: 1000;
+    background: white;
+    transition: left 0.5s;
+    box-sizing: border-box;
+}
+
+#full-text.collapsed {
+    left: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#close-text {
+    position: fixed;
+    margin-left: -38px;
+    margin-top: -10px;
+    font-size: 32px;
+    text-decoration: none;
+    color: black;
+}
+
+#close-text:hover { color: grey; }
+
+#about-satire {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw;
+    padding: 5px 40px;
+    background: #094;
     color: white;
     box-sizing: border-box;
     transition: top 2s;
@@ -181,7 +292,7 @@ sidebar article p { transition: margin 1s 0.3s; }
     font-weight: bold;
     margin-left: -2px;
     content: "×";
-    color: #F90;
+    color: #094;
 }
 
 #close-satire-notification {
@@ -225,6 +336,34 @@ img {
     opacity: 1;
     transition: opacity 0.5s 0;
 }
+
+.video-container iframe { width: 100%; height: 100%; }
+.above .video-container { position: relative; bottom: 100vh; }
+.video-container {
+    margin: 100px auto; 
+    width: 880px;
+    height: 495px;
+    bottom: 0;
+    transition: bottom 1s;
+}
+
+.nav-button {
+    position: absolute;
+    left: 20vw;
+    box-sizing: border-box;
+    display: block;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 100%;
+    font-size: 32px;
+    text-align: center;
+    cursor: pointer;
+    transform: translateX(-21px);
+    transition: left 1s, opacity 1s;
+}
+
+#down-button { bottom: 20px; }
+#down-button:before { content: "▼"; }
+.video #down-button { left: 50vw; }
 
 @font-face {
     font-family: "Officina Sans";
