@@ -150,7 +150,7 @@ function buildPage() {
 
         if (i === 0) {
             section.element.className = 'focus';
-            section.element.innerHTML = '<div class="video-container"><iframe id="promo-video" src="//www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" modestbranding="1" allowfullscreen></iframe></div>';
+            section.element.innerHTML = '<div class="video-container"><iframe id="promo-video" src="//www.youtube.com/embed/uautw3v0Gs0?enablejsapi=1" frameborder="0" modestbranding="1" allowfullscreen></iframe></div>';
             function infect(element, event, fn) {
                 element.addEventListener(event, onScroll);
                 var children = element.childNodes;
