@@ -107,6 +107,7 @@ function animateSection(direction) {
     var target = PAGES[targetIndex];
     target.element.className = 'focus';
     document.body.className = target.type || '';
+    pauseYouTubeVideo();
 
     window.setTimeout(function() {
         animating = false;
@@ -144,7 +145,7 @@ function buildPage() {
 
         if (i === 0) {
             section.element.className = 'focus';
-            section.element.innerHTML = '<div class="video-container"><iframe id="promo-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" modestbranding="1"></iframe></div>';
+            section.element.innerHTML = '<div class="video-container"><iframe id="promo-video" src="//www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" modestbranding="1" allowfullscreen></iframe></div>';
             function infect(element, event, fn) {
                 element.addEventListener(event, onScroll);
                 var children = element.childNodes;
@@ -290,6 +291,11 @@ function closeSatireNotification(event) {
     window.sessionStorage.setItem('no-nag', true);
     document.getElementById('about-toggle').style.display = '';
     document.getElementById('about-satire').style.top = '-100px';
+}
+
+function pauseYouTubeVideo() {
+    document.getElementById('promo-video').contentWindow
+        .postMessage('{"event": "command", "func": "pauseVideo", "arg": ""}', '*');
 }
 
 ready(function() {
