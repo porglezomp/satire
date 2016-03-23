@@ -5,33 +5,38 @@ var PAGES = [
     {
         title: "The Problem",
         source: 'content/01-00-the-problem.md',
-        count: 4
+        count: 4,
+        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "Why Amazon?",
         source: 'content/01-01-why-amazon.md',
-        count: 3
+        count: 3,
+        images: ['kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "What We're Doing",
-
         source: 'content/02-00-what-were-doing.md',
-        count: 4
+        count: 4,
+        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "Products",
         source: 'content/02-01-products.md',
-        count: 3
+        count: 3,
+        images: ['kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "The Technology",
         source: 'content/02-02-the-technology.md',
-        count: 4
+        count: 4,
+        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg']
     },
     {
         title: "More",
         source: 'content/03-00-more.md',
-        count: 5
+        count: 5,
+        images: ['headdress.jpg', 'kopak.jpg', 'xingu.jpg', 'huni-kuni.jpg', 'uncontacted-tribe.jpg']
     }
 ];
 
@@ -132,6 +137,9 @@ function buildPage() {
             imageContainer.style.backgroundColor = 'rgb(0, ' + (255-50*i) + ', 0)';
             section.imageElements.push(imageContainer);
             imageStackContainer.appendChild(imageContainer);
+            var image = document.createElement('img');
+            image.src = '/images/' + section.images[i];
+            imageContainer.appendChild(image);
         }
 
         if (first) {
